@@ -1,3 +1,9 @@
 <template name="layout">
-	Acá está mi página
+	Acá está el encabezado de todas las páginas
+	
+	<!-- yield template is managed by iron route manager. From current route, content is selected (check route.js table) -->
+        {{> yield}}
+    <!-- end of iron router managed yield template -->
+	
+	Acá va el pié de página en todas las páginas
 </template>
