@@ -8,9 +8,10 @@ body {
 	
 	position:relative;
 	width:100%;
-	margin:0auto;
+	margin:0 auto;
 	min-width:1280px;
 	min-height:600px;
+	
 }
 
 img {
@@ -29,7 +30,7 @@ text-transform: uppercase;
 background: #B9005A;
 position: fixed;
 width: 100%;
-height: 65px;
+height: 13%;
 z-index:2;
 
 
@@ -61,19 +62,17 @@ z-index:2;
 #contenidos {
 
 	float: center;
-	color: #ffffff;
-	background: #3A3136;
-	width: 98% ;
+	color: #3A3136;
+	background: #ffffff;
+	width: 100% ;
 	height: 545px;
 	margin-top: 65px;
 	
 }
-#texto{
-   color: #ffffff;
-   font: normal 16px 'open_sansregular',sans-serif;
-}
+
 h1{
 	font: normal 25px 'open_sansregular',sans-serif; 
+	color: #3A3136;
 }
 h2{
 	font: normal 35px 'open_sansregular',sans-serif; 
@@ -82,7 +81,6 @@ h2{
 .horizon{
 	display:inline;
 	width:80px;
-	background: #3A3136;
 	color:#3A3136;
 }
 
@@ -111,16 +109,17 @@ h3{
 	text-align:right;
 	
 }
-h4{
-	font: normal 20px 'open_sansregular',sans-serif; 
-	text-align:center;
-	color: #ffffff;
 	
-}
 h5{
 	font: normal 15px 'open_sansregular',sans-serif; 
 	text-align:center;
 	color: #ffffff;
+	
+}
+h4{
+	font: normal 15px 'open_sansregular',sans-serif; 
+	text-align:center;
+	color: #3A3136;
 	
 }
 .campo{
@@ -156,7 +155,7 @@ footer {
 	clear: both;
 	position: fixed;
 	bottom: 0%; 
-	height: 32px;
+	height: 5%;
 	width:100%;
 	background:#B9005A;
 	text-align: center;

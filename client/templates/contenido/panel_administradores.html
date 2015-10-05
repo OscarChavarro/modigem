@@ -1,11 +1,15 @@
 <template name="adminPanel">
-<div id="contenidos">
-<ul>
+	<div id="contenidos">
+	<ul>
 	  <li class="horizon">{{>currentuser}}</li>
-</ul>
-<h4>
-TU ERES ADMINISTRADOR
-</h4>
+	</ul>
+	<h4>
+		TU ERES ADMINISTRADOR
+	</h4>
+	<div class="tabla">
+		{{>baseusuario}}
+	</div>
+
 <br>
 {{>addAdmin}}
 <br>

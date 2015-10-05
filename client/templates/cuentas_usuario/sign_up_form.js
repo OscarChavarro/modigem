@@ -2,7 +2,7 @@
   'submit form': function(e) { 
     e.preventDefault();
     logemail = $(e.target).find('[name=email]').val(); 
-    logname = $(e.target).find('[name=name]').val(); 	
+    logname =  $(e.target).find('[name=name]').val(); 	
 	logpassword = $(e.target).find('[name=password]').val();
 	Accounts.createUser({email: logemail, username: logname, password: logpassword});
 		       if (Meteor.user()) {
