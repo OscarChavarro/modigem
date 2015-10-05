@@ -1,0 +1,21 @@
+<template name="layout">
+	<body>
+<header>
+	<div>
+		<div>
+	<a id="titulo" href="/">modigem</a>
+		</div>
+		<div id="orden">
+		{{>ingreso}}
+		</div>
+	</div>
+</header>
+<div id="padre">
+        {{> yield}}
+</div>
+
+	<footer>
+	<h4>  todos los derechos reservados </h4>
+	</footer>
+	</body>
+</template>
