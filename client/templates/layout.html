@@ -1,11 +1,21 @@
 <template name="layout">
-	Acá está el encabezado de todas las páginas<br><hr>
-	
-	<!-- yield template is managed by iron route manager. From current route, content is selected (check route.js table) -->
+	<body>
+<header>
+	<div>
+		<div>
+	<a id="titulo" href="/">modigem</a>
+		</div>
+		<div id="orden">
+		{{>ingreso}}
+		</div>
+	</div>
+</header>
+<div id="padre">
         {{> yield}}
-    <!-- end of iron router managed yield template -->
-	
-	<br>
-	<hr>
-	Acá va el pié de página en todas las páginas
+</div>
+
+	<footer>
+	<h4>  todos los derechos reservados </h4>
+	</footer>
+	</body>
 </template>
