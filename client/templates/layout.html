@@ -6,7 +6,11 @@
 	<a id="titulo" href="/">modigem</a>
 		</div>
 		<div id="orden">
-		{{>ingreso}}
+		{{#if ayudante true}}
+		{{>loginForm}}
+		{{else}}
+		{{>currentuser}}
+		{{/if}}
 		</div>
 	</div>
 </header>
