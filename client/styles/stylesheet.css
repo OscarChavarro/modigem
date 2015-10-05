@@ -58,6 +58,20 @@ z-index:2;
 	margin-top: 65px;
 	
 }
+#contenidos {
+
+	float: center;
+	color: #ffffff;
+	background: #3A3136;
+	width: 98% ;
+	height: 545px;
+	margin-top: 65px;
+	
+}
+#texto{
+   color: #ffffff;
+   font: normal 16px 'open_sansregular',sans-serif;
+}
 h1{
 	font: normal 25px 'open_sansregular',sans-serif; 
 }
@@ -103,6 +117,12 @@ h4{
 	color: #ffffff;
 	
 }
+h5{
+	font: normal 15px 'open_sansregular',sans-serif; 
+	text-align:center;
+	color: #ffffff;
+	
+}
 .campo{
 	display:inline;
 	text-align:
@@ -112,7 +132,7 @@ h4{
 	display:inline;
 	float:right;
 	padding:10px;
-	margin:50px;
+	margin:10px;
 }
 .btn-group {
 	float:right;
