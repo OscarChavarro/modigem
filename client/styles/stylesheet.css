@@ -8,7 +8,7 @@ body {
 	
 	position:relative;
 	width:100%;
-	margin:0 auto;
+	margin:0auto;
 	min-width:1280px;
 	min-height:600px;
 }
@@ -47,7 +47,7 @@ z-index:2;
     font-style: normal;
 } /*evocacion de fuente*/
 
-#main {
+#formulario {
 
 	float: right;
 	text-align: center;
@@ -112,7 +112,7 @@ h4{
 	display:inline;
 	float:right;
 	padding:10px;
-	
+	margin:50px;
 }
 .btn-group {
 	float:right;
