@@ -1,3 +1,0 @@
- adminList.insert({
-    newAdmin: 'administrador'
-  });
