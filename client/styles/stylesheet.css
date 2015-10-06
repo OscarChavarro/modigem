@@ -98,6 +98,37 @@ z-index:2;
 	border:solid 1px #4e4f52;
 	
 }
+#mostrarUsuarios{
+
+	float: left;
+	overflow: auto;
+	color: #3A3136;
+	background: #ffffff;
+	height: 50%;
+	width: 15% ;
+	
+}
+#administrarAdmins{
+
+	
+	color: #3A3136;
+	background: #ffffff;
+	height: 50%;
+	width: 15% ;
+	border:solid 1px #4e4f52;
+	
+}
+#mostrarAdmins{
+
+	float: center;
+	overflow: auto;
+	color: #3A3136;
+	background: #ffffff;
+	height: 45%;
+	width: 99% ;
+	
+}
+
 #contenedorMostrarPiezas {
 
 	float: right;

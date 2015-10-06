@@ -8,15 +8,15 @@
 	<div id="botonNavegacion">
    {{>toFormularioPieza}}
    </div>
-	<div class="tabla">
+	<div id="mostrarUsuarios">
 		{{>informacionAll}}
 	</div>
+    <div id="administrarAdmins">
+	{{>addAdmin}}
+	<div id="mostrarAdmins">
+	{{>checkAdmin}}
+	</div>
+	</div>
 <br>
-{{>addAdmin}}
-<br>
-
-<div id="texto">
-{{>checkAdmin}}
-</div>
 </div>
 </template>
