@@ -4,5 +4,10 @@
 	</div>
 	<div id="formulario">
 		{{>signUpForm}}
+		{{#if ayudante2 true}}
+		<a>{{>Ghost}}</a>
+		{{else}}
+		<a>{{>goToPanelBut}}</a>
+		{{/if}}
 	</div>
 </template>

@@ -3,7 +3,7 @@
 	<hr>
 	<table>
 	{{#each Iam}}
-		<td>
+		<tr>
 			<tr><strong>Nombre:&nbsp;&nbsp;</strong>{{nombre}}</tr>
 			<tr><strong>Correo:&nbsp;&nbsp;</strong>{{email}}</tr>
 			<tr><strong>Username:&nbsp;&nbsp;</strong>{{username}}</tr>
@@ -11,8 +11,8 @@
 			<tr><strong>Direccion:&nbsp;&nbsp;</strong>{{direccion}}</tr>
 			<tr><strong>Profesion:&nbsp;&nbsp;</strong>{{profesion}}</tr>
 			<tr><strong>Bio:&nbsp;&nbsp;</strong>{{about}}</tr>
-			
-		</td>		
+			<hr>
+		</tr>		
 	{{/each}}
 	</table>
 </template>
