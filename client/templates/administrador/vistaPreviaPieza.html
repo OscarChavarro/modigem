@@ -1,24 +1,46 @@
 <template name="previewPiece">
-<div id="izquierdaPreview">
+<div id="base">
 	<table>
-		<td>
+	
 			<tr><strong>Titulo:&nbsp;&nbsp;</strong>{{piece.titulo}}</tr>
-			<tr><strong>Categoria:&nbsp;&nbsp;</strong>{{piece.categoria}}</tr>
-			<tr><strong>Natural o cultural:&nbsp;&nbsp;</strong>{{piece.natOcult}}</tr>
-			<tr><strong>Material o inmaterial:&nbsp;&nbsp;</strong>{{piece.matOinmat}}</tr>
-			<tr><strong>¿Es un patrimonio científico?&nbsp;&nbsp;</strong>{{piece.patCientifico}}</tr>
-			<tr><strong>Dimensiones:&nbsp;&nbsp;</strong>{{piece.ancho}}&nbsp;x&nbsp;{{piece.largo}}&nbsp;x&nbsp;{{piece.alto}}</tr>
-			<tr><strong>Elaborado entre:&nbsp;&nbsp;</strong>{{piece.desdeAno}}&nbsp;y&nbsp;{{piece.hastaAno}}</tr>
-			<tr><strong>Tecnica usada:&nbsp;&nbsp;</strong>{{piece.tecnicaUsada}}</tr>
-			<tr><strong>Medio usado:&nbsp;&nbsp;</strong>{{piece.medioUsado}}</tr>
-			<tr><strong>Ubicacion actual:&nbsp;&nbsp;</strong>{{piece.ubicacionMuseo}}</tr>
-			<tr><strong>Estado de conservacion:&nbsp;&nbsp;</strong>{{piece.conserv}}</tr>
-			<tr><strong>Imagen disponible en:&nbsp;&nbsp;</strong>{{piece.imagen}}</tr>
-			
-		</td>		
 	</table>
-</div>
-<div id="derechaPreview">
-VISTA PREVIA DE LA IMAGEN
+	<table>
+			<td>
+			{{#each uploads}}	
+						<img id="ficha" src="{{url store='images'}}">
+				{{/each}}
+			</td>	
+	</table>
+	<table>
+	<tr>
+			<td class="mitad"><strong>Categoria:&nbsp;&nbsp;</strong>{{piece.categoria}}</td>
+			<td class="mitad"><strong>Natural o cultural:&nbsp;&nbsp;</strong>{{piece.natOcult}}</td>
+	</tr>
+	</table>
+	<table>
+	<tr>
+			<td class="tercio"><strong>Material o inmaterial:&nbsp;&nbsp;</strong>{{piece.matOinmat}}</td>
+			<td class="tercio"><strong>Dimensiones:&nbsp;&nbsp;</strong>{{piece.ancho}}&nbsp;x&nbsp;{{piece.largo}}&nbsp;x&nbsp;{{piece.alto}}</td>
+			<td class="tercio"><strong>Elaborado entre:&nbsp;&nbsp;</strong>{{piece.desdeAno}}&nbsp;y&nbsp;{{piece.hastaAno}}</td>
+	</tr>
+	</table>
+	<table>
+	<tr>
+			<td class="tercio"><strong>¿Es un patrimonio científico?&nbsp;&nbsp;</strong>{{piece.patCientifico}}</td>
+			<td class="tercio"><strong>Tecnica usada:&nbsp;&nbsp;</strong>{{piece.tecnicaUsada}}</td>
+			<td class="tercio"><strong>Medio usado:&nbsp;&nbsp;</strong>{{piece.medioUsado}}</td>
+	</tr>
+	</table>
+	<table>
+	<tr>
+			<td class="mitad"><strong>Ubicacion actual:&nbsp;&nbsp;</strong>{{piece.ubicacionMuseo}}</td>
+			<td class="mitad"><strong>Estado de conservacion:&nbsp;&nbsp;</strong>{{piece.conserv}}</td>
+	</tr>
+	</table>
+	<table>
+	<tr>
+			<strong>Imagen disponible en:&nbsp;&nbsp;</strong>{{piece.imagen}}
+	</tr>		
+	</table>
 </div>
 </template>
