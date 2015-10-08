@@ -1,0 +1,27 @@
+<template name="showPieces">
+<div id="izquierdaPreview">
+	<table>
+	{{#each pieces}}
+	        {{#with FS.GetFile "images" imagenID}}
+			<img class="ficha" src="{{url}}">
+            {{/with}}
+			<tr><strong>Titulo:&nbsp;&nbsp;</strong>{{titulo}}</tr>
+			<tr><strong>Categoria:&nbsp;&nbsp;</strong>{{categoria}}</tr>
+			<tr><strong>Natural o cultural:&nbsp;&nbsp;</strong>{{natOcult}}</tr>
+			<tr><strong>Material o inmaterial:&nbsp;&nbsp;</strong>{{matOinmat}}</tr>
+			<tr><strong>¿Es un patrimonio científico?&nbsp;&nbsp;</strong>{{patCientifico}}</tr>
+			<tr><strong>Dimensiones:&nbsp;&nbsp;</strong>{{ancho}}&nbsp;x&nbsp;{{largo}}&nbsp;x&nbsp;{{alto}}</tr>
+			<tr><strong>Elaborado entre:&nbsp;&nbsp;</strong>{{desdeAno}}&nbsp;y&nbsp;{{hastaAno}}</tr>
+			<tr><strong>Tecnica usada:&nbsp;&nbsp;</strong>{{tecnicaUsada}}</tr>
+			<tr><strong>Medio usado:&nbsp;&nbsp;</strong>{{medioUsado}}</tr>
+			<tr><strong>Ubicacion actual:&nbsp;&nbsp;</strong>{{ubicacionMuseo}}</tr>
+			<tr><strong>Estado de conservacion:&nbsp;&nbsp;</strong>{{conserv}}</tr>
+			<tr><strong>Imagen disponible en:&nbsp;&nbsp;</strong>{{imagen}}</tr>	
+            <hr>			
+	{{/each}}
+	
+	</table>
+</div>
+
+</template>
+

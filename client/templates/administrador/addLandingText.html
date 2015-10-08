@@ -1,0 +1,14 @@
+<template name="addLandingText">
+<center>
+<form action="action">
+<label><strong>Actualiza el texto para mostrar en landing page</strong></label>
+      <textarea name="landingText" rows="5" cols="75">Texto para landingpage </textarea>
+      <input type="submit" id="login-button" value="actualizar" />
+</form>
+</center>
+<strong>Texto actual para mostrar:</strong>
+<br>
+<div id="mostrarLandingTextActual">
+{{>actualLandingText}}
+</div>
+</template>

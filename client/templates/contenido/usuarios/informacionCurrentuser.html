@@ -1,0 +1,18 @@
+<template name="informacion">
+	<h3>MI PERFIL DE USUARIO</h3>
+	<table>
+	{{#each Iam}}
+		<td>
+			<tr><strong>Mi nombre:&nbsp;&nbsp;</strong>{{nombre}}</tr>
+			<tr><strong>Mi correo:&nbsp;&nbsp;</strong>{{email}}</tr>
+			<tr><strong>Mi username:&nbsp;&nbsp;</strong>{{username}}</tr>
+			<tr><strong>Mi edad:&nbsp;&nbsp;</strong>{{edad}}</tr>
+			<tr><strong>Mi direccion:&nbsp;&nbsp;</strong>{{direccion}}</tr>
+			<tr><strong>Mi profesion:&nbsp;&nbsp;</strong>{{profesion}}</tr>
+			<tr><strong>Acerca de mi:&nbsp;&nbsp;</strong>{{about}}</tr>
+			
+		</td>		
+	{{/each}}
+	</table>
+</template>
+
