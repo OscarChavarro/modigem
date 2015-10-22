@@ -1,14 +1,8 @@
 <template name="manageUserRole">
- 	 <body>
-		<header>
-		  	<div>
-				<div>
-					<a id="titulo" href="/">modigem</a>
-				</div>
-			</div>
-		</header>
-			<div>
-			        {{> yield}}
-			</div>
-  	</body>
+	Aca viene el formulario donde podemos crear usuarios:
+	<form id="Form">
+		<input type="text" name="user" value="usuario" />
+		<input type="password" name="password" value="contraseña" />
+		<input type="submit" name="createUser" value="Crear usuario" />
+	</form>
 </template>
