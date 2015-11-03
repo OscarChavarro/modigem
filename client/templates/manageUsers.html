@@ -7,4 +7,12 @@
 		<input type="text" name="apellido" value="" placeholder="Apellido" />
 		<input type="submit" name="createUsers" value="Nuevos Usuarios" />
 	</form>
+	<div id="show" name="show" class="show">
+		Mostrando usuarios:
+		<ul>
+		{{#each usersList}}
+			<li>Hay un usuario con id {{this.id}}</li>
+		{{/each}}
+		</ul>
+	</div>
 </template>
