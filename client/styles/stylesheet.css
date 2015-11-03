@@ -39,12 +39,12 @@ z-index:2;
 }
 @font-face {
     font-family: 'open_sansregular';
-    src: url('fuente/opensans-regular-webfont.eot');
-    src: url('fuente/opensans-regular-webfont.eot?#iefix') format('embedded-opentype'),
-         url('fuente/opensans-regular-webfont.woff2') format('woff2'),
-         url('fuente/opensans-regular-webfont.woff') format('woff'),
-         url('fuente/opensans-regular-webfont.ttf') format('truetype'),
-         url('fuente/opensans-regular-webfont.svg#open_sansregular') format('svg');
+    //src: url('fuente/opensans-regular-webfont.eot');
+    //src: url('fuente/opensans-regular-webfont.eot?#iefix') format('embedded-opentype'),
+    //     url('fuente/opensans-regular-webfont.woff2') format('woff2'),
+    //     url('fuente/opensans-regular-webfont.woff') format('woff'),
+    //     url('fuente/opensans-regular-webfont.ttf') format('truetype'),
+    //     url('fuente/opensans-regular-webfont.svg#open_sansregular') format('svg');
     font-weight: normal;
     font-style: normal;
 } /*evocacion de fuente*/
