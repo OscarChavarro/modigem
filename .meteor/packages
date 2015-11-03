@@ -27,7 +27,6 @@ accounts-twitter
 accounts-oauth
 iron:router
 ejson
-autopublish
 cfs:filesystem
 cfs:standard-packages
 cfs:gridfs
