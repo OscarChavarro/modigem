@@ -1,0 +1,12 @@
+Meteor.subscribe('allPiece');
+Meteor.subscribe('allImageClons');
+Meteor.subscribe('allImages');
+Meteor.subscribe('allRegistered');
+Meteor.subscribe('allLandingTexts');
+Meteor.subscribe('allAdmins');
+Meteor.subscribe('allFiles1');
+Meteor.subscribe('allFiles2');
+Meteor.subscribe('allFiles3');
+Meteor.subscribe('allFiles4');
+Meteor.subscribe('allUserRole');
+Meteor.subscribe('allUser2Role');
