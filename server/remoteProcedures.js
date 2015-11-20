@@ -1,5 +1,23 @@
 Meteor.startup(function () {
+    fs = Npm.require("fs");
     Meteor.methods({
+        writeToFile: function(path, content)
+        {
+            console.log("Exportando a un archivo!");
+
+            if ( !valid(fs) ) {
+                console.log("Error: No está disponible la extensión NPM:fs");
+                return "ERROR";
+            }
+
+            fs.writeFile("/tmp/" + path, content, function(error) {
+                if ( valid(error) ) {
+                    console.log("Error escribiendo archivo: " + error);
+                } 
+            });
+
+            return "OK";
+        },
         /**
         Retorna en un arreglo el conjunto de perfiles de usuario disponibles
         para el usuario dado.

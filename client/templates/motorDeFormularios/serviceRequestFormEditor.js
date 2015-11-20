@@ -709,6 +709,12 @@ Template.serviceRequestFormCreateEdit.helpers({
 /**
 */
 Template.serviceRequestFormCreateEdit.events({
+    "submit #serviceRequestFormTest": function(event, template) {
+        event.preventDefault();
+        Meteor.call("writeToFile", "archivo.html", "Hola", function(error, response){
+            console.log("Listo");
+        });
+    },
     "submit .reorderQueryForm": function (event) {
         event.preventDefault();
         var up = event.target.up;
