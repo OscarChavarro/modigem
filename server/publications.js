@@ -16,17 +16,8 @@ Meteor.publish('allLandingTexts', function(){
 Meteor.publish('allAdmins', function(){
 	return adminList.find();
 });
-Meteor.publish('allFiles1', function(){
-	return cfs._tempstore.chunks.find();
-});
-Meteor.publish('allFiles2', function(){
-	return cfs.images.filerecord.find();
-});
-Meteor.publish('allFiles3', function(){
-	return cfs_gridfs._tempstore.chunks.find();
-});
-Meteor.publish('allFiles4', function(){
-	return cfs_gridfs._tempstore.files.find();
+Meteor.publish('allUsers', function(){
+	return users.find();
 });
 Meteor.publish('allUserRole', function(){
 	return userRole.find();
