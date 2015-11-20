@@ -1,29 +1,31 @@
 <template name="layout">
-    <header>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-        <title>MODIGEM</title>
-        <link rel="stylesheet" type="text/css" href="/stylesheets/arreglos.css">
-        <link rel="stylesheet" type="text/css" href="/stylesheets/custom.css">
-        <div>
+    <div class="container-fluid">
+        <div class="navbar navbar-inverse navbar-fixed-top homeheader" role="navigation">
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+            <title>MODIGEM</title>
+            <link rel="stylesheet" type="text/css" href="/stylesheets/arreglos.css">
+            <link rel="stylesheet" type="text/css" href="/stylesheets/custom.css">
             <div>
-                <a id="title" href="/">MODIGEM</a>
-            </div>
-            <div id="orden">
-                {{#if ayudante true}}
-                    {{>loginForm}}
-                {{else}}
-                    {{>currentuser}}
-                {{/if}}
+                <div>
+                    <a id="titulo" href="/">MODIGEM</a>
+                </div>
+                <div id="orden">
+                    {{#if ayudante true}}
+                        {{>loginForm}}
+                    {{else}}
+                        {{>currentuser}}
+                    {{/if}}
+                </div>
             </div>
         </div>
-    </header>
+    </div>
 
     <div id="parent" class="container-fluid move-more-down">
         {{> yield}}
     </div>
 
-    <footer>
-        <h4>MuseoDigital S.A.S. - Derechos reservados (c) 2015</h4>
-    </footer>
+    <div class="container-fluid">
+        <h4>Museo Digital S.A.S. - Derechos reservados (c) 2015</h4>
+    </div>
 </template>
