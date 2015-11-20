@@ -160,36 +160,47 @@ Meteor.startup(function () {
         },
         /**
         Mecanismo de envío de información por subscripción personalizada,
-        lado del servidor. Por investigar si existe una manera de implementar 
-        esto basados en el Meteor.publish y Meteor.subscribe!
+        lado del servidor.
 
         Este método es usado en los módulos de gestión de formularios.
 
-        Dado el identificador de un servicio profesional "psid", este método
-        retorna un objeto que contiene un identificador de formulario.
+        Dado el identificador de un servicio formulario "formId", este método
+        retorna un objeto que contiene un identificador de formulario si existe
+        o retorna un nuevo formulario si no existe. Nótese que el _id del 
+        formulario es diferente a formId en el caso de tener que crear un
+        nuevo formulario.
         */
-        getFormFromProfessionalServiceId: function(psid) {
+        getFormFromId: function(formId) {
             console.log("========================================================");
-            console.log("  - Me preguntan por el formulario del PSID: " + psid);
+            console.log("  - Me preguntan por el formulario con ID: " + formId);
             var serviceRequestForm = global["serviceRequestForm"];
 
-            if ( !valid(psid) || !valid(serviceRequestForm) ) {
-                console.log("    . Error: PSID inválido o no hay acceso a la base de datos");
-                return {psid: psid, fid: "undefined"};
+            if ( !valid(formId) || !valid(serviceRequestForm) ) {
+                console.log("    . Error: FORMID inválido o no hay acceso a la base de datos");
+                return {formId: formId, fid: "undefined"};
             }
 
+            var oid;
+            oid = new Mongo.ObjectID(formId);
             var filter;
-            filter = {parentProfessionalServiceId: ""+psid};
+            filter = {_id: oid};
             var o = serviceRequestForm.findOne(filter);
 
             if ( !valid(o) ) {
-                console.log("    . Error: formulario no encontrado");
-                return {psid: psid, fid: "undefined"};                
+                console.log("    . Error: formulario no encontrado, creando uno nuevo");
+                oid = new Mongo.ObjectID();
+                filter = {_id: oid};
+                serviceRequestForm.insert(filter);
+                o = serviceRequestForm.findOne(filter);
+                if ( !valid(o) ) {
+                    return {formId: formId, fid: "undefined"};
+                }
+                return {formId: o._id, serviceRequestForm: o};
             }
 
             var answer;
             console.log("    . Formulario encontrado: " + o._id);
-            answer = {psid: psid, serviceRequestForm: o};
+            answer = {formId: formId, serviceRequestForm: o};
             return answer;
         },
         /**

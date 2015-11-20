@@ -45,7 +45,6 @@ Meteor.publish(
 );
 Meteor.publish(
     "serviceRequestQueryType", function() {
-        console.log("Publicando información de la colección serviceRequestQueryType");
         return serviceRequestQueryType.find();
     }
 );

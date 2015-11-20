@@ -9,14 +9,16 @@ implementadas con llamados a procedimientos remotos (RPC).
 Router.route("/serviceRequestFormCreateEdit", {
     name: "serviceRequestFormCreateEdit",
     loadingTemplate: "serviceFormEditorLoading",
+    /**
+    */
     data: function() {
-        Session.set("professionalServiceId", "0"); // Esto se recibe como parámetro
-        psid = Session.get("professionalServiceId");
-
+        formId = Session.get("formId");
         Session.set("databaseReady", false);
         Session.set("selectedServiceRequestForm", null);
-        console.log("Entrando a editor de formulario para el servicio profesional " + psid);
+        console.log("Entrando a editor de formularios para el formulario de id " + formId);
     },
+    /**
+    */
     waitOn: function() {
         return Meteor.subscribe("serviceRequestQueryType");
     }
@@ -74,139 +76,51 @@ Template.serviceRequestFormCreateEdit.helpers({
         }
 
         return dbTable;
-    }
-});
-
-/*
-Exporta la coleccion de la conexión a la 
-base de datos MongoDB para hacerla disponible como una variable en el 
-contexto Sidebar.
-*/
-Template.serviceRequestFormCreateEdit.helpers({
+    },
+    /*
+    Exporta la coleccion de la conexión a la 
+    base de datos MongoDB para hacerla disponible como una variable en el 
+    contexto Sidebar.
+    */
     dbProfessionalService: function() {
         console.log("Importando la coleccion dbProfessionalService para la plantilla serviceRequestFormCreateEdit");
         return professionalService.find();
-    }
-});
-
-/*
-Exporta la coleccion de la conexión a la 
-base de datos MongoDB para hacerla disponible como una variable en el 
-contexto Sidebar.
-*/
-Template.serviceRequestFormCreateEdit.helpers({
+    },
+    /*
+    Exporta la coleccion de la conexión a la 
+    base de datos MongoDB para hacerla disponible como una variable en el 
+    contexto Sidebar.
+    */
     dbServiceRequestForm: function() {
         console.log("Importando la coleccion dbServiceRequestForm para la plantilla serviceRequestFormCreateEdit");
         return serviceRequestForm.find();
-    }
-});
-
-/*
-Exporta la coleccion de la conexión a la 
-base de datos MongoDB para hacerla disponible como una variable en el 
-contexto Sidebar.
-*/
-Template.serviceRequestFormCreateEdit.helpers({
+    },
+    /*
+    Exporta la coleccion de la conexión a la 
+    base de datos MongoDB para hacerla disponible como una variable en el 
+    contexto Sidebar.
+    */
     dbServiceRequestFormQuery: function() {
         console.log("Importando la coleccion dbServiceRequestFormQuery para la plantilla serviceRequestFormCreateEdit");
         return serviceRequestFormQuery.find();
-    }
-});
-
-/*
-Exporta la coleccion de la conexión a la 
-base de datos MongoDB para hacerla disponible como una variable en el 
-contexto Sidebar.
-*/
-Template.serviceRequestQueryTypeCreate.helpers({
+    },
+    /*
+    Exporta la coleccion de la conexión a la 
+    base de datos MongoDB para hacerla disponible como una variable en el 
+    contexto Sidebar.
+    */
     dbServiceRequestQueryType: function() {
         console.log("Importando la coleccion dbServiceRequestQueryType para la plantilla serviceRequestQueryTypeCreate");
         return serviceRequestQueryType.find();
-    }
-});
-//============================================================================
-
-/**
-Si en la variable de módulo "psid" (ver la definición en la función "data" de
-la ruta "serviceRequestFormCreateEdit") hay un identificador de servicio
-profesional, se retorna ese identificador. De lo contrario se retorna false.
-
-Permite al desarrollador definir identificadores de servicio profesional
-mediante un parámetro psid ingresado en el método GET en el URL.
-*/
-Template.serviceRequestFormCreateEdit.helpers({
-    getProfessionalServiceId: function () {
-        // Caso 1: Variable de sesión especificando el servicio profesional
-        if ( valid(psid) ) {
-            return psid;
-        }
-
-        // Caso 2: Variable de método GET especificando el servicio profesional
-        var professionalServiceId = accessGetParameters()["psid"];
-        if ( valid(professionalServiceId) ) {
-            psid = professionalServiceId;
-            Session.set("professionalServiceId", psid);
-            return psid;
-        }
-
-        // Caso 3: Servicio profesional no especificado
-        return false;
-    }
-});
-
-/**
-Esta función intenta identificar el servicio profesional actualmente
-seleccionado y retorna su nombre si es válido. Si no es válido retorna
-false.
-
-Como caso especial, el identificador "0" se asocia a los elementos globales
-que aplican a todos los servicios profesionales, y en ese caso se retorna
-la cadena "[GLOBAL]".
-*/
-Template.serviceRequestFormCreateEdit.helpers({
-    getProfessionalServiceName: function () {
-        if ( psid === "0" ) {
-            return "[GLOBAL]"
-        }
-        if ( psid === "1" ) {
-            return "[TEST]"
-        }
-
-        var p = Session.get("professionalService");
-
-        if ( valid(p) && valid(p.nameSpa) ) {
-            return p.nameSpa;
-        }
-
-        Meteor.call("getProfessionalServiceFromId", psid, function(error, response) {
-            if ( valid(error) ) {
-                console.log("Error llamando a getProfessionalServiceFromId:" + error);
-            }
-            else if ( valid(response) ) {
-                var r = response.professionalService;
-
-                if ( valid(r) ) {
-                    Session.set("professionalService", r);
-                }
-            }
-        });
-
-        return false;
-    }
-});
-
-/**
-*/
-Template.serviceRequestFormCreateEdit.helpers({
+    },
+    /**
+    */
     databaseReady: function () { 
         var s = Session.get("databaseReady");
         return s;
-    }
-});
-
-/**
-*/
-Template.serviceRequestFormCreateEdit.helpers({
+    },
+    /**
+    */
     databaseStatusMessage: function () { 
         var html;
         var status = true;
@@ -283,45 +197,27 @@ Template.serviceRequestFormCreateEdit.helpers({
         }
 
         return html;
-    }
-});
-
-/**
-?
-*/
-Template.serviceRequestFormCreateEdit.events({
-  "submit .Form": function (event) {
-    event.preventDefault();
-
-    return false;
-  }
-});
-
-/**
-Le da acceso a la plantilla Spacebars a una variable de sesión (reactiva)
-*/
-Template.serviceRequestFormCreateEdit.helpers({
+    },
+    /**
+    Le da acceso a la plantilla Spacebars a una variable de sesión (reactiva)
+    */
     selectedServiceRequestForm: function() {
         return Session.get("selectedServiceRequestForm");
-    }
-});
+    },
+    /**
+    Dado un identificador de un servicio profesional, esta función retorna
+    su formulario asociado. Si no existe ningún formulario asociado, se
+    retorna false.
 
-/**
-Dado un identificador de un servicio profesional, esta función retorna
-su formulario asociado. Si no existe ningún formulario asociado, se
-retorna false.
+    Nótese que el professionalServiceId puede ser "0". En ese caso
+    particular se accede al "formulario global", que es común a todos
+    los servicios.
+    */
+    getServiceRequestFormId: function() {
+        console.log("Accediendo al formulario actualmente cargado");
 
-Nótese que el professionalServiceId puede ser "0". En ese caso
-particular se accede al "formulario global", que es común a todos
-los servicios.
-*/
-Template.serviceRequestFormCreateEdit.helpers({
-    getServiceRequestFormId: function () {
-
-        console.log("Seleccionando el formulario para el servicio profesional de id " + psid);
-
-        if ( !valid(psid) ) {
-            console.log("  - Error: en getServiceRequestFormId se ha recibido un PSID inválido");
+        if ( !valid(formId) ) {
+            console.log("  - Error: en getServiceRequestFormId se ha recibido un FORMID inválido");
             return false;
         }
 
@@ -332,7 +228,7 @@ Template.serviceRequestFormCreateEdit.helpers({
         }
 
         console.log("  - Solicitando formulario al servidor...");
-        Meteor.call("getFormFromProfessionalServiceId", psid, function(error, response) {
+        Meteor.call("getFormFromId", formId, function(error, response) {
             if ( valid(error) ) {
                 console.log("Error llamando getFormFromProfessionalServiceId: " + error);
             }

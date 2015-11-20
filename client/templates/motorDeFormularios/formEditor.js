@@ -3,14 +3,22 @@ Router.route("/formEditor", {
     name: "formEditor",
     loadingTemplate: "formEditorLoading",
     data: function () {
-        //datasetLanguageFiltered = language.find();
         return true;
     }
-    /*,
-    waitOn: function() {
-        languageHandle = Meteor.subscribe("language");
-        return languageHandle;
-    }*/
 });
 
 //============================================================================
+
+Template.formEditor.events({
+    /**
+    Ejemplo de envío de identificadores de formulario al editor de formulario.
+    Nótese que tras ejecutar esta función, el navegador realizará un salto
+    a la URL del editor de formulario.
+    */
+    "click #setFormId": function(event, template) {
+        var id = event.currentTarget.getAttribute("data-id");
+        if ( valid(id) ) {
+            Session.set("formId", id);
+        }
+    } 
+});
