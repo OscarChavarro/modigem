@@ -1,0 +1,53 @@
+<!--
+Plantilla privada.
+-->
+<template name="serviceRequestQueryTypeLoading">
+    Cargando información de tipos de preguntas de la base de datos...
+</template>
+    
+<!--
+Plantilla privada.
+-->
+<template name="reportServiceRequestQueryType">
+    <tr>
+        <td>{{nameC}}</td>
+        <td>{{nameSpa}}</td>
+    </tr>
+</template>
+
+<!--
+Plantilla pública.
+-->
+<template name="serviceRequestQueryTypeCreate" class="serviceRequestQueryTypeCreate">
+    <h1>Crear tipo de pregunta</h1>
+
+    Actualmente se tienen los siguientes tipos de pregunta:
+    <table border=2>
+        <tr>
+            <th>Etiqueta interna del sistema (C)</th>
+            <th>Nombre en español del tipo</th>
+        </tr>
+        {{#each dbServiceRequestQueryType}}
+            {{> reportServiceRequestQueryType}}
+        {{/each}}
+    </table>
+
+    <P>Acá puede agregar un nuevo tipo de pregunta:</P>
+
+    <form id="ServiceRequestQueryTypeCreateForm">
+        <label for="nameC">Etiqueta interna para el sistema (C) del tipo de pregunta:</label>
+        <input type="text" name="nameC" id="nameC" placeholder=""/>
+        <br>
+        <label for="nameSpa">Nombre en español del tipo de pregunta:</label>
+        <input type="text" name="nameSpa" id="nameSpa" placeholder=""/>
+        <br>
+        <input type="submit" value="Agregar tipo de pregunta">
+    </form>
+</template>
+
+<!--
+Plantilla pública.
+-->
+<template name="serviceRequestQueryTypeEditDelete" class="serviceRequestQueryTypeCreate">
+    <h1>Modificar o eliminar tipo de pregunta</h1>
+</template>

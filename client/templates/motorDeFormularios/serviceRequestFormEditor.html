@@ -1,0 +1,203 @@
+<!--
+Plantilla privada.
+-->
+<template name="serviceFormEditorLoading">
+    Cargando información necesaria para editar un formulario...
+</template>
+
+<!--
+Plantilla privada.
+
+PRE: El contexto this contiene un formulario de solicitud de servicio.
+Esta plantilla genera los elementos HTML necesarios para mostrar un
+formulario, usando las técnicas óptimas disponibles (de momento
+llamados al servidor usando métodos RPC).
+-->
+<template name="testFormDialog">
+	{{#if this}}
+		{{startForm this._id}}
+		{{#if questionListReady this._id}}
+			{{#each dbServiceRequestForm2QueryFiltered this._id}}
+				{{{buildQuestionStart}}}
+				<div class="form-group">
+					<h5 class="heading-form" for={{this._id}}>
+						{{this.descriptionSpa}}
+					</h5>
+					{{startQuery this._id}}
+					{{#if answerOptionsListReady this._id}}
+						{{{buildAnswerOptions this}}}
+					{{else}}
+						Cargando opciones de respuesta...
+					{{/if}}
+				</div>
+				{{{buildQuestionEnd}}}
+			{{/each}}
+		{{else}}
+			Cargando preguntas...
+		{{/if}}
+	{{else}}
+		Actualizando formulario...
+	{{/if}}
+</template>
+
+<!--
+Plantilla pública.
+
+Despliega el editor de formularios.
+-->
+<template name="serviceRequestFormCreateEdit">
+    {{#if getProfessionalServiceId}}
+        {{#if getServiceRequestFormId}}
+            <h1>
+                Formulario para el servicio profesional "{{getProfessionalServiceName}}"
+            </h1>
+
+            <p>El formulario para solicitud de servicios esta cargado. Información general del formulario:</p>
+            <ul>
+                <li>
+                    Identificador de formulario en la base de datos (colección "serviceRequestForm"): 
+                    {{getServiceRequestFormId}}
+                </li>
+                <li>
+                    Identificador del servicio profesional asociado (colección "professionalService"):
+                    {{getProfessionalServiceId}}
+                </li>
+            </ul>
+
+            El formulario actualmente tiene las siguientes preguntas:
+
+            <table border = "2" width="100%">
+                <tr>
+                    <th><b>ORDEN</b></th>
+                    <th><b>DATOS</b></th>
+                    <th width="20%"><b>ORIGEN EN INGLÉS</b></th>
+                </tr>
+				
+				{{startForm (selectedServiceRequestForm._id)}}
+				{{#if questionListReady (selectedServiceRequestForm._id)}}
+					{{#each dbServiceRequestFormQueryFiltered (selectedServiceRequestForm._id)}}
+					<tr>
+						<td>
+                            Información general de la pregunta:
+                            <ul>
+                                <li>Índice de orden dentro del formulario: <b>{{this.order}}</b></li>
+                                <li>Identificador en la base de datos: {{this._id}}</li>
+                            </ul>
+							
+                            Cambios generales para la pregunta:
+                            <div class="row">
+                                <div class="col-sm-6 col-md-6">
+                                    {{{showUpForm}}}
+                                </div>
+                                <div class="col-sm-6 col-md-6">
+                                    {{{showDownForm}}}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-md-12">
+                                    <form class="deleteQueryForm">
+                                        <input type="submit" id=remove{{this._id}} name="delete" value="Eliminar pregunta" class="btn btn-warning btn-block">
+                                    </form>
+                                </div>
+                            </div>
+						</td>
+						<td>						
+							<form class="editQueryForm"> 
+								<label>Descripción:</label>
+								<input type="text" id={{this._id}} name="description" value={{this.descriptionSpa}} class="form-control">
+							</form><br>
+
+							<form class="selectQueryTypeForm">
+								<label>Tipo de pregunta:</label>
+								<select name="queryType" id={{this._id}}>
+									{{#each dbQueryTypesArray}}
+                                        {{{reportQueryTypeOption (.) (..) }}}
+									{{/each}}
+								</select>
+								<input type="submit" name="changeType" value="Cambiar!" /> 
+							</form><br>
+														
+							{{#if answerOptionsListReady (this._id) (this.typeC)}}
+								{{{editServiceRequestFormQueryDetails}}}
+							{{else}}
+								Cargando las opciones de respuestas
+							{{/if}}
+
+						</td>
+                        <td  width="20%">
+                            {{this.descriptionEng}}
+                            {{#if answerOptionsListReady (this._id) (this.typeC)}}
+                                {{{showServiceRequestFormQueryDetails}}}
+                            {{else}}
+                                Cargando las opciones de respuestas
+                            {{/if}}
+                        </td>
+					</tr>
+					{{/each}}
+				{{else}}
+					Cargando preguntas...
+				{{/if}}
+
+                <tr>
+                    <td>
+                        <form class="serviceRequestFormQueryAdd">
+                            <input class="btn btn-block" type="submit" name="create" value="Crear nueva pregunta"/>
+                        </form>
+                    </td>
+                    <td colspan="2">
+                        <form class="serviceRequestFormTest">
+                            <input class="btn btn-block" type="submit" name="test" value="¡Probar formulario!"/>
+                        </form>
+                    </td>
+                </tr>
+            </table>
+
+            <div 
+                class="modal fade" 
+                id="dialogTestForm" 
+                tabindex="-1" 
+                role="dialog" 
+                aria-labelledby="dialogTestFormLabel">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button 
+                                type="button" 
+                                class="close" 
+                                data-dismiss="modal" 
+                                aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h4 class="modal-title">Probando formulario</h4>
+                        </div>
+
+                        <div id="testDialogArea" class="modal-body">
+                            <!-- Esto será llenado por Meteor Blaze, ver llamados a Blaze.render -->
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        {{else}}
+            <p>
+            Estas intentando consultar un formulario que no está disponible para
+            el servicio profesional seleccionado {{getProfessionalServiceName}},
+            o la información del formulario no ha llegado desde la conexión con
+            la base de datos.
+            </p>
+        {{/if}}
+    {{else}}
+        <b>ERROR</b>: Mensaje para el desarrollador - No hay un servicio profesional seleccionado.
+        Estas intentando consultar un formulario sin especificar
+        el servicio profesional al cual pertenece o el identificador de
+        servicio profesional proporcionado es inválido. Intenta de nuevo 
+        entrar  a esta página enviando la variable GET "psid" con el ID del
+        servicio profesional, o revisa que tu identificador exista en
+        la base de datos en la tabla "professionalService".
+    {{/if}}
+</template>
