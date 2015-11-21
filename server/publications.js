@@ -18,9 +18,9 @@ Meteor.publish('allLandingTexts', function(){
 Meteor.publish('allAdmins', function(){
 	return adminList.find();
 });
-//Meteor.publish('allUsers', function(){
-//	return users.find();
-//});
+Meteor.publish('allUsers', function(){
+	return Meteor.users.find();
+});
 Meteor.publish('allUserRole', function(){
 	return userRole.find();
 });
