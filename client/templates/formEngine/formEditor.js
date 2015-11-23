@@ -68,7 +68,7 @@ var customMultipleChoicesEditorForm = function(queryId, queryType)
 
     html += '<tr>';
     html += '<td>';
-    html += '<form class="createMultipleChoiceForm">';
+    html += '<form id="addAnswerOptionForm">';
     html += '    <input type="text" id="' + queryId + '" name="newOption" value="" >';
     html += '    <input type="submit" value="Agregar opción de respuesta">';
     html += '</form>';
@@ -613,8 +613,17 @@ Template.formEditor.helpers({
 /**
 */
 Template.formEditor.events({
-    "submit .createMultipleChoiceForm": function (event) {
+    /**
+    Esta función toma un texto que el usuario ha entrado como nuevo contenido de
+    opción de respuesta a una pregunta de selección múltiple y la ingresa al
+    modelo de formulario.
+
+    PRE: El formulario al cual se le procesa el submit tiene un campo de texto
+    llamado "newOption" que contiene valores válidos en sus atributos id y un text.
+    */
+    "submit #addAnswerOptionForm": function (event) {
         event.preventDefault();
+
         var id = event.target.newOption.id;
         var text = event.target.newOption.value;
 
