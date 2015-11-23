@@ -1,4 +1,6 @@
 //============================================================================
+/**
+*/
 Router.route('/serviceRequestQueryTypeCreate', {
     name: 'serviceRequestQueryTypeCreate',
     loadingTemplate: "serviceRequestQueryTypeLoading",
@@ -10,6 +12,8 @@ Router.route('/serviceRequestQueryTypeCreate', {
     }
 });
 
+/**
+*/
 Router.route('/serviceRequestQueryTypeEditDelete', {
     name: 'serviceRequestQueryTypeEditDelete',
     loadingTemplate: "rerviceRequestQueryTypeLoading",

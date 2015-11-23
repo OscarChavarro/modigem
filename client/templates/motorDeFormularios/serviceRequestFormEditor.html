@@ -14,30 +14,30 @@ formulario, usando las técnicas óptimas disponibles (de momento
 llamados al servidor usando métodos RPC).
 -->
 <template name="testFormDialog">
-        {{#if this}}
-                {{startForm this._id}}
-                {{#if questionListReady this._id}}
-                        {{#each dbServiceRequestForm2QueryFiltered this._id}}
-                                {{{buildQuestionStart}}}
-                                <div class="form-group">
-                                        <h5 class="heading-form" for={{this._id}}>
-                                                {{this.descriptionSpa}}
-                                        </h5>
-                                        {{startQuery this._id}}
-                                        {{#if answerOptionsListReady this._id}}
-                                                {{{buildAnswerOptions this}}}
-                                        {{else}}
-                                                Cargando opciones de respuesta...
-                                        {{/if}}
-                                </div>
-                                {{{buildQuestionEnd}}}
-                        {{/each}}
-                {{else}}
-                        Cargando preguntas...
-                {{/if}}
+    {{#if this}}
+        {{startForm this._id}}
+        {{#if questionListReady this._id}}
+            {{#each dbServiceRequestForm2QueryFiltered this._id}}
+                {{{buildQuestionStart}}}
+                    <div class="form-group">
+                        <h5 class="heading-form" for={{this._id}}>
+                            {{this.descriptionSpa}}
+                        </h5>
+                        {{startQuery this._id}}
+                        {{#if answerOptionsListReady this._id}}
+                            {{{buildAnswerOptions this}}}
+                        {{else}}
+                            Cargando opciones de respuesta...
+                        {{/if}}
+                    </div>
+                {{{buildQuestionEnd}}}
+            {{/each}}
         {{else}}
-                Actualizando formulario...
+            Cargando preguntas...
         {{/if}}
+    {{else}}
+        Actualizando formulario...
+    {{/if}}
 </template>
 
 <!--
@@ -72,57 +72,57 @@ Despliega el editor de formularios.
                 <th width="20%"><b>ORIGEN EN INGLÉS</b></th>
             </tr>
                         
-                        {{startForm (selectedServiceRequestForm._id)}}
-                        {{#if questionListReady (selectedServiceRequestForm._id)}}
-                                {{#each dbServiceRequestFormQueryFiltered (selectedServiceRequestForm._id)}}
-                                <tr>
-                                        <td>
-                        Información general de la pregunta:
-                        <ul>
-                            <li>Índice de orden dentro del formulario: <b>{{this.order}}</b></li>
-                            <li>Identificador en la base de datos: {{this._id}}</li>
-                        </ul>
-                                                
-                        Cambios generales para la pregunta:
-                        <div class="row">
-                            <div class="col-sm-6 col-md-6">
-                                {{{showUpForm}}}
+            {{startForm (selectedServiceRequestForm._id)}}
+            {{#if questionListReady (selectedServiceRequestForm._id)}}
+                {{#each dbServiceRequestFormQueryFiltered (selectedServiceRequestForm._id)}}
+                    <tr>
+                        <td>
+                            Información general de la pregunta:
+                            <ul>
+                                <li>Índice de orden dentro del formulario: <b>{{this.order}}</b></li>
+                                <li>Identificador en la base de datos: {{this._id}}</li>
+                            </ul>
+                                                    
+                            Cambios generales para la pregunta:
+                            <div class="row">
+                                <div class="col-sm-6 col-md-6">
+                                    {{{showUpForm}}}
+                                </div>
+                                <div class="col-sm-6 col-md-6">
+                                    {{{showDownForm}}}
+                                </div>
                             </div>
-                            <div class="col-sm-6 col-md-6">
-                                {{{showDownForm}}}
+                            <div class="row">
+                                <div class="col-sm-12 col-md-12">
+                                    <form class="deleteQueryForm">
+                                        <input type="submit" id=remove{{this._id}} name="delete" value="Eliminar pregunta" class="btn btn-warning btn-block">
+                                    </form>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-12 col-md-12">
-                                <form class="deleteQueryForm">
-                                    <input type="submit" id=remove{{this._id}} name="delete" value="Eliminar pregunta" class="btn btn-warning btn-block">
-                                </form>
-                            </div>
-                        </div>
-                                        </td>
-                                        <td>                                            
-                                                <form class="editQueryForm"> 
-                                                        <label>Descripción:</label>
-                                                        <input type="text" id={{this._id}} name="description" value={{this.descriptionSpa}} class="form-control">
-                                                </form><br>
+                        </td>
+                        <td>                                            
+                            <form class="editQueryForm"> 
+                                    <label>Descripción:</label>
+                                    <input type="text" id={{this._id}} name="description" value={{this.descriptionSpa}} class="form-control">
+                            </form><br>
 
-                                                <form class="selectQueryTypeForm">
-                                                        <label>Tipo de pregunta:</label>
-                                                        <select name="queryType" id={{this._id}}>
-                                                                {{#each dbQueryTypesArray}}
-                                    {{{reportQueryTypeOption (.) (..) }}}
-                                                                {{/each}}
-                                                        </select>
-                                                        <input type="submit" name="changeType" value="Cambiar!" /> 
-                                                </form><br>
-                                                                                                        
-                                                {{#if answerOptionsListReady (this._id) (this.typeC)}}
-                                                        {{{editServiceRequestFormQueryDetails}}}
-                                                {{else}}
-                                                        Cargando las opciones de respuestas
-                                                {{/if}}
+                            <form class="selectQueryTypeForm">
+                                <label>Tipo de pregunta:</label>
+                                <select name="queryType" id={{this._id}}>
+                                    {{#each dbQueryTypesArray}}
+                                        {{{reportQueryTypeOption (.) (..) }}}
+                                    {{/each}}
+                                </select>
+                                <input type="submit" name="changeType" value="Cambiar!" /> 
+                            </form><br>
+                                                                                    
+                            {{#if answerOptionsListReady (this._id) (this.typeC)}}
+                                {{{editServiceRequestFormQueryDetails}}}
+                            {{else}}
+                                Cargando las opciones de respuestas
+                            {{/if}}
 
-                                        </td>
+                        </td>
                     <td  width="20%">
                         {{this.descriptionEng}}
                         {{#if answerOptionsListReady (this._id) (this.typeC)}}
