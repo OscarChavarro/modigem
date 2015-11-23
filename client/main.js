@@ -4,6 +4,5 @@ Meteor.subscribe('allImages');
 Meteor.subscribe('allRegistered');
 Meteor.subscribe('allLandingTexts');
 Meteor.subscribe('allAdmins');
-Meteor.subscribe('allUsers');
 Meteor.subscribe('allUserRole');
 Meteor.subscribe('allUser2Role');
