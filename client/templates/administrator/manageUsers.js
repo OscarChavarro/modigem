@@ -3,9 +3,15 @@ Router.route("/manageUsers", {
     name: "manageUsers",
     loadingTemplate: "manageUsersLoading",
     data: function () {
-    	dbAllUsers = Meteor.users.find();
-
         return true;
+    },
+    waitOn: function() {
+        var combine = {
+            ready: function() {
+                return Meteor.subscribe("userRole") && Meteor.subscribe("allUsers");
+            }	
+        };
+        return combine;
     }
 });
 
@@ -13,6 +19,7 @@ Router.route("/manageUsers", {
 
 Template.manageUsers.helpers({
 	"allUsers": function() {
-		return dbAllUsers;
+    	var cursor = Meteor.users.find();
+		return Meteor.users.find();
 	}
 });

@@ -1,31 +1,40 @@
 console.log("Publicando colecciones MongoDB a Minimongo");
 
-Meteor.publish('allPiece', function(){
-	return piece.find();
+Meteor.publish("allUsers", function() {
+    var cursor = Meteor.users.find({});
+    return cursor;
 });
-Meteor.publish('allImageClons', function(){
-	return imageClon.find();
+
+Meteor.publish("allPiece", function() {
+    return piece.find();
 });
-Meteor.publish('allImages', function(){
-	return images.find();
+
+Meteor.publish("allImageClons", function() {
+    return imageClon.find();
 });
-Meteor.publish('allRegistered', function(){
-	return registeredUsers.find();
+
+Meteor.publish("allImages", function() {
+    return images.find();
 });
-Meteor.publish('allLandingTexts', function(){
-	return landingText.find();
+
+Meteor.publish("allRegistered", function() {
+    return registeredUsers.find();
 });
-Meteor.publish('allAdmins', function(){
-	return adminList.find();
+
+Meteor.publish("allLandingTexts", function() {
+    return landingText.find();
 });
-Meteor.publish('allUsers', function(){
-	return Meteor.users.find();
+
+Meteor.publish("allAdmins", function() {
+    return adminList.find();
 });
-Meteor.publish('allUserRole', function(){
-	return userRole.find();
+
+Meteor.publish("allUserRole", function() {
+    return userRole.find();
 });
-Meteor.publish('allUser2Role', function(){
-	return user2Role.find();
+
+Meteor.publish("allUser2Role", function() {
+    return user2Role.find();
 });
 
 Meteor.publish(
@@ -33,21 +42,25 @@ Meteor.publish(
         return serviceRequestForm.find();
     }
 );
+
 Meteor.publish(
     "serviceRequestFormQuery", function() {
         return serviceRequestFormQuery.find();
     }
 );
+
 Meteor.publish(
     "serviceRequestForm2Query", function() {
         return serviceRequestForm2Query.find();
     }
 );
+
 Meteor.publish(
     "serviceRequestQueryType", function() {
         return serviceRequestQueryType.find();
     }
 );
+
 Meteor.publish(
     "serviceRequestAnswerOption", function() {
         return serviceRequestAnswerOption.find();
