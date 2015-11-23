@@ -1,26 +1,25 @@
 <template name="adminPanel">
-        <div class="contenidos">
-   <div id="mostrarPiezas">
-                <center><strong>Piezas añadidas a la colección</strong></center>
-                <br>
+    <div class="contenidos">
+        <div id="mostrarPiezas">
+            <center><strong>Piezas añadidas a la colección</strong></center>
+            <br>
                 {{>showPieces}}
         </div>
-        <div id="botonNavegacion">
-   {{>toFormularioPieza}}
-   </div>
-        <div id="mostrarUsuarios">
-                {{>addRole}}
-        </div>
-        <div id="nuevoLandingText">
+    <div id="botonNavegacion">
+        {{>toFormularioPieza}}
+    </div>
+    <div id="mostrarUsuarios">
+        {{>addRole}}
+    </div>
+    <div id="nuevoLandingText">
         {{>addLandingText}}
-        </div>
+    </div>
     <div id="administrarAdmins">
         {{>addAdmin}}
         <div id="mostrarAdmins">
-        {{>checkAdmin}}
+            {{>checkAdmin}}
         </div>
-        </div>
-
-<br>
-</div>
+    </div>
+    <br>
+    </div>
 </template>

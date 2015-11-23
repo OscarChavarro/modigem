@@ -1,6 +1,5 @@
 Template.informacionAll.helpers({
-        Iam: function(){
-                  return registeredUsers.find().fetch();
-        }
-        
+    Iam: function(){
+        return registeredUsers.find().fetch();
+    }
 });

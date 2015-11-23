@@ -1,5 +1,5 @@
 Template.showPieces.helpers({
-  pieces: function() {
-    return piece.find();
-  }
+    pieces: function() {
+        return piece.find();
+    }
 });
