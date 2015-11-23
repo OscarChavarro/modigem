@@ -205,13 +205,15 @@ Template.serviceRequestFormCreateEdit.helpers({
         return Session.get("selectedServiceRequestForm");
     },
     /**
-    Dado un identificador de un servicio profesional, esta función retorna
-    su formulario asociado. Si no existe ningún formulario asociado, se
-    retorna false.
+    Dado un identificador de un formulario, esta función retorna
+    el id correspondiente en la base de datos. Nótese que si el 
+    formulario existe en la base de datos y logra cargarse, se retorna
+    el mismo id especificado, pero puede pasar que el formulario no
+    exista, y en ese caso se crea un formulario vacío y se retorna
+    un id que no es el mismo que se había especificado si no el
+    nuevo.
 
-    Nótese que el professionalServiceId puede ser "0". En ese caso
-    particular se accede al "formulario global", que es común a todos
-    los servicios.
+    Si no hay disponible ningún formulario asociado, se retorna false.
     */
     getServiceRequestFormId: function() {
         console.log("Accediendo al formulario actualmente cargado");
@@ -709,7 +711,7 @@ Template.serviceRequestFormCreateEdit.helpers({
 /**
 */
 Template.serviceRequestFormCreateEdit.events({
-    "submit #serviceRequestFormTest": function(event, template) {
+    "submit #formExport": function(event, template) {
         event.preventDefault();
         Meteor.call("writeToFile", "archivo.html", "Hola", function(error, response){
             console.log("Listo");
@@ -841,7 +843,7 @@ Template.serviceRequestFormCreateEdit.events({
 /**
 */
 Template.serviceRequestFormCreateEdit.events({
-    "submit .serviceRequestFormTest": function (event, template) {
+    "submit #formTest": function (event, template) {
         event.preventDefault();
         
         var q;

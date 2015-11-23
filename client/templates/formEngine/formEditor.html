@@ -2,7 +2,7 @@
 Plantilla privada.
 -->
 <template name="serviceFormEditorLoading">
-    Cargando información necesaria para editar un formulario...
+    Cargando de la base de datos información necesaria para editar un formulario...
 </template>
 
 <!--
@@ -95,7 +95,12 @@ Despliega el editor de formularios.
                             <div class="row">
                                 <div class="col-sm-12 col-md-12">
                                     <form class="deleteQueryForm">
-                                        <input type="submit" id=remove{{this._id}} name="delete" value="Eliminar pregunta" class="btn btn-warning btn-block">
+                                        <input 
+                                            type="submit" 
+                                            id=remove{{this._id}} 
+                                            name="delete" 
+                                            value="Eliminar pregunta" 
+                                            class="btn btn-warning btn-block">
                                     </form>
                                 </div>
                             </div>
@@ -103,8 +108,14 @@ Despliega el editor de formularios.
                         <td>                                            
                             <form class="editQueryForm"> 
                                     <label>Descripción:</label>
-                                    <input type="text" id={{this._id}} name="description" value={{this.descriptionSpa}} class="form-control">
-                            </form><br>
+                                    <input 
+                                        type="text" 
+                                        id={{this._id}} 
+                                        name="description" 
+                                        value={{this.descriptionSpa}} 
+                                        class="form-control">
+                            </form>
+                            <br>
 
                             <form class="selectQueryTypeForm">
                                 <label>Tipo de pregunta:</label>
@@ -121,21 +132,21 @@ Despliega el editor de formularios.
                             {{else}}
                                 Cargando las opciones de respuestas
                             {{/if}}
-
                         </td>
-                    <td  width="20%">
-                        {{this.descriptionEng}}
-                        {{#if answerOptionsListReady (this._id) (this.typeC)}}
-                            {{{showServiceRequestFormQueryDetails}}}
-                        {{else}}
-                            Cargando las opciones de respuestas
-                        {{/if}}
-                    </td>
-                                </tr>
-                                {{/each}}
-                        {{else}}
-                                Cargando preguntas...
-                        {{/if}}
+
+                        <td  width="20%">
+                            {{this.descriptionEng}}
+                            {{#if answerOptionsListReady (this._id) (this.typeC)}}
+                                {{{showServiceRequestFormQueryDetails}}}
+                            {{else}}
+                                Cargando las opciones de respuestas
+                            {{/if}}
+                        </td>
+                    </tr>
+                {{/each}}
+            {{else}}
+                Cargando preguntas...
+            {{/if}}
 
             <tr>
                 <td>
@@ -144,7 +155,7 @@ Despliega el editor de formularios.
                     </form>
                 </td>
                 <td colspan="2">
-                    <form class="serviceRequestFormTest">
+                    <form id="formTest">
                         <input class="btn btn-block" type="submit" name="test" value="¡Probar formulario!"/>
                     </form>
                 </td>
@@ -152,10 +163,11 @@ Despliega el editor de formularios.
         </table>
 
         También podrás exportar este formulario a un sitio estático. 
-        <form id="serviceRequestFormTest">
+        <form id="formExport">
             <input class="btn btn-block" type="submit" name="export" value="¡Exportar formulario!"/>
         </form>
 
+        <!-- Diálogo modal para pre-visualización de formularios -->
         <div 
             class="modal fade" 
             id="dialogTestForm" 
@@ -189,8 +201,7 @@ Despliega el editor de formularios.
 
     {{else}}
         <p>
-        Estas intentando consultar un formulario que no está disponible para
-        el servicio profesional seleccionado {{getProfessionalServiceName}},
+        Estas intentando consultar un formulario que no está disponible,
         o la información del formulario no ha llegado desde la conexión con
         la base de datos.
         </p>
