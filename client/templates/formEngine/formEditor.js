@@ -6,9 +6,9 @@ son manejadas con el mecanismo estándar de publicación / subscripción
 si no mediante interacciones cliente / servidor personalizadas e
 implementadas con llamados a procedimientos remotos (RPC).
 */
-Router.route("/serviceRequestFormCreateEdit", {
-    name: "serviceRequestFormCreateEdit",
-    loadingTemplate: "serviceFormEditorLoading",
+Router.route("/formEditor", {
+    name: "formEditor",
+    loadingTemplate: "formEditorLoading",
     /**
     */
     data: function() {
@@ -68,7 +68,7 @@ var customMultipleChoicesEditorForm = function(queryId, queryType)
 
     html += '<tr>';
     html += '<td>';
-    html += '<form class="createMultipleChoiceForm">';
+    html += '<form id="addAnswerOptionForm">';
     html += '    <input type="text" id="' + queryId + '" name="newOption" value="" >';
     html += '    <input type="submit" value="Agregar opción de respuesta">';
     html += '</form>';
@@ -153,7 +153,7 @@ Nótese que esta función retorna un subconjunto de datos de la tabla
 serviceRequestForm2Query a partir de la forma actualmente seleccionada
 selectedServiceRequestForm.
 */
-Template.serviceRequestFormCreateEdit.helpers({
+Template.formEditor.helpers({
     /**
     */
     reportQueryTypeOption: function(queryType, query)
@@ -335,11 +335,11 @@ Template.serviceRequestFormCreateEdit.helpers({
 
     Si no hay disponible ningún formulario asociado, se retorna false.
     */
-    getServiceRequestFormId: function() {
-        console.log("Accediendo al formulario actualmente cargado");
+    getFormId: function() {
+        console.log("[formEditor.getFormId] Accediendo al formulario actualmente cargado");
 
         if ( !valid(formId) ) {
-            console.log("  - Error: en getServiceRequestFormId se ha recibido un FORMID inválido");
+            console.log("  - [formEditor.getFormId] Error: se ha recibido un FORMID inválido");
             return false;
         }
 
@@ -612,9 +612,18 @@ Template.serviceRequestFormCreateEdit.helpers({
 
 /**
 */
-Template.serviceRequestFormCreateEdit.events({
-    "submit .createMultipleChoiceForm": function (event) {
+Template.formEditor.events({
+    /**
+    Esta función toma un texto que el usuario ha entrado como nuevo contenido de
+    opción de respuesta a una pregunta de selección múltiple y la ingresa al
+    modelo de formulario.
+
+    PRE: El formulario al cual se le procesa el submit tiene un campo de texto
+    llamado "newOption" que contiene valores válidos en sus atributos id y un text.
+    */
+    "submit #addAnswerOptionForm": function (event) {
         event.preventDefault();
+
         var id = event.target.newOption.id;
         var text = event.target.newOption.value;
 

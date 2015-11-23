@@ -1,7 +1,7 @@
 <!--
 Plantilla privada.
 -->
-<template name="serviceFormEditorLoading">
+<template name="formEditorLoading">
     Cargando de la base de datos información necesaria para editar un formulario...
 </template>
 
@@ -43,23 +43,20 @@ llamados al servidor usando métodos RPC).
 <!--
 Plantilla pública.
 
-Despliega el editor de formularios.
+Despliega el editor de formularios que le permite a un usuario administrador
+crear de manera interactiva un formulario en la base de datos con toda la
+estructura de información asociada, en términos de formularios, preguntas
+y opciones de respuesta.
 -->
-<template name="serviceRequestFormCreateEdit">
-    {{#if getServiceRequestFormId}}
-        <h1>
-            Formulario para el servicio profesional "{{getProfessionalServiceName}}"
-        </h1>
+<template name="formEditor">
+    {{#if getFormId}}
+        <h1>Editor de formularios</h1>
 
-        <p>El formulario para solicitud de servicios esta cargado. Información general del formulario:</p>
+        <p>El formulario esta cargado. Información general del formulario:</p>
         <ul>
             <li>
                 Identificador de formulario en la base de datos (colección "serviceRequestForm"): 
-                {{getServiceRequestFormId}}
-            </li>
-            <li>
-                Identificador del servicio profesional asociado (colección "professionalService"):
-                {{getProfessionalServiceId}}
+                {{getFormId}}
             </li>
         </ul>
 
@@ -69,7 +66,7 @@ Despliega el editor de formularios.
             <tr>
                 <th><b>ORDEN</b></th>
                 <th><b>DATOS</b></th>
-                <th width="20%"><b>ORIGEN EN INGLÉS</b></th>
+                <!-- th width="20%"><b>ORIGEN EN INGLÉS</b></th -->
             </tr>
                         
             {{startForm (selectedServiceRequestForm._id)}}
@@ -134,14 +131,14 @@ Despliega el editor de formularios.
                             {{/if}}
                         </td>
 
-                        <td  width="20%">
+                        <!-- td  width="20%">
                             {{this.descriptionEng}}
                             {{#if answerOptionsListReady (this._id) (this.typeC)}}
                                 {{{showServiceRequestFormQueryDetails}}}
                             {{else}}
                                 Cargando las opciones de respuestas
                             {{/if}}
-                        </td>
+                        </td -->
                     </tr>
                 {{/each}}
             {{else}}
@@ -154,7 +151,7 @@ Despliega el editor de formularios.
                         <input class="btn btn-block" type="submit" name="create" value="Crear nueva pregunta"/>
                     </form>
                 </td>
-                <td colspan="2">
+                <td>
                     <form id="formTest">
                         <input class="btn btn-block" type="submit" name="test" value="¡Probar formulario!"/>
                     </form>
