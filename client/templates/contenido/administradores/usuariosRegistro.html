@@ -1,19 +1,17 @@
 <template name="baseusuario">
-        <h3>Base de datos de Usuario</h3>
-        <table>
-                <tr id="encabezado">
-                        <td><u>Usuario</u></td>
-                        <td><u>Correo</u></td>
+    <h3>Base de datos de Usuario</h3>
+    <table>
+        <tr id="encabezado">
+            <td><u>Usuario</u></td>
+            <td><u>Correo</u></td>
                 
-                </tr>
+        </tr>
         <br>
         {{#each user}}
-                <tr>
-                        <td>{{username}}</td>
-                        <td>{{emails}}</td>
-                        
-                </tr>
-                
+        <tr>
+            <td>{{username}}</td>
+            <td>{{emails}}</td>
+        </tr>
         {{/each}}
-        </table>
+    </table>
 </template>

@@ -1,16 +1,16 @@
 <template name="showPiecesHome">
-<div id="showCollectionsHome">
+    <div id="showCollectionsHome">
         <table> 
-        {{#each pieces}}
-                <td>
-                        <tr>
-                {{#with FS.GetFile "images" imagenID}}
+            {{#each pieces}}
+            <td>
+                <tr>
+                    {{#with FS.GetFile "images" imagenID}}
                         <img class="imagenesHome" src="{{url}}">
-            {{/with}}
-                        </tr>
-                        <tr><center><strong>Titulo:&nbsp;&nbsp;</strong>{{titulo}}</center></tr>
+                    {{/with}}
+                </tr>
+                <tr><center><strong>Titulo:&nbsp;&nbsp;</strong>{{titulo}}</center></tr>
             </td>                       
-        {{/each}}
+            {{/each}}
         </table>
-</div>
+    </div>
 </template>

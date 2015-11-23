@@ -18,8 +18,8 @@ Router.route("/manageUsers", {
 //============================================================================
 
 Template.manageUsers.helpers({
-        "allUsers": function() {
+    "allUsers": function() {
         var cursor = Meteor.users.find();
-                return Meteor.users.find();
-        }
+        return Meteor.users.find();
+    }
 });

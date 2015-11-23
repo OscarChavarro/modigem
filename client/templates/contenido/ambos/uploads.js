@@ -1,5 +1,5 @@
 Template.showPieces.helpers({
-  uploads: function() {
-    return images.find();
-  }
+    uploads: function() {
+        return images.find();
+    }
 });

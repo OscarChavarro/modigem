@@ -1,105 +1,104 @@
 <template name="formularioPieza1">
-<div class= "contenidos">
+    <div class= "contenidos">
         <div id="formulariosdePiezas">
-        <div id="botonNavegacion">
-   {{>toAdminPanel}}
-    </div>
-        <form>
-        <table>
-        <td>
-        <div>
-                <label>Titulo de pieza</label>
-                <div>
-                 <input name="nombrepieza" id="nombrepieza" type="text" value="" placeholder="Ingrese el titulo"/>
-                </div>
-        </div>
-        <div>
-                <label>Categoria (Historia,etno,etc.)</label>
-                <div>
-                 <input name="cat" id="cat" type="text" value="" placeholder="Ingrese cat"/>
-                </div>
-        </div>
-        <div>
-                <label>Natural o cultural?</label>
-                <div>
-                 <input name="natocult" id="natocult" type="text" value="" placeholder="Nat o cult?"/>
-                </div>
-        </div>
-        <div>
-                <label>Material o Inmaterial?</label>
-                <div>
-                 <input name="matoinmat" id="matoinmat" type="text" value="" placeholder="Mat o inmat?"/>
-                </div>
-        </div>
-        <div>
-                <label>Es un patrimonio cientifico?</label>
-                <div>
-                 <input name="patcient" id="patcient" type="text" value="" placeholder="Si o no?"/>
-                </div>
-        </div>
-        <div>
-                <label>Ingrese las dimensiones (cm)</label>
-                <div>
-                 <input name="anchodim" id="anchodim" type="number" value="" placeholder="Ancho"/>
-                 <br>
-                 <input name="largodim" id="largodim" type="number" value="" placeholder="Largo"/>
-                 <br>
-                 <input name="altodim" id="altodim" type="number" value="" placeholder="Alto"/>
-                 <br>
-                </div>
-        </div>
-        <div>
-                <label>Que tecnica se uso?</label>
-                <div>
-                 <input name="tecnica" id="tecnica" type="text" value="" placeholder="Escultura, pintura, arquitectura?"/>
-                </div>
-        </div>
-        </td>
-        <td>
-        <div>
-                <label>Tipo de medio audiovisual</label>
-                <div>
-                 <input name="audio" id="audio" type="text" value="" placeholder="Cual es el medio?"/>
-                </div>
-        </div>
-        <div>
-                <label>Ubicacion actual en el museo</label>
-                <div>
-                 <input name="ubic" id="ubic" type="text" value="" placeholder="Describa la ubicacion"/>
-                </div>
-        </div>
-        <div>
-                <label>Estado de conservacion</label>
-                <div>
-                 <input name="conserv" id="conserv" type="text" value="" placeholder="Bueno o malo?"/>
-                </div>
-        </div>
-        <div>
-                <label>URL de la imagen</label>
-                <div>
-                 <input name="imagen" id="imagen" type="url" value="" placeholder="http://"/>
-                </div>
-        </div>
-        <div>
-                        {{>subir}}
-                </div>
-        </td>
-        </table>
-                
-                        <div>
-          <li class="horizon">Fecha de creación entre:</li>
-          <li class="horizon"> <input name="anodesd" id="anodesd" type="date" value="" placeholder="Entre el ano"/></li>
-          <li class="horizon">Y</li>
-          <li class="horizon"><input name="anohasta" id="anohasta" type="date" value="" placeholder="Hasta el ano"/></li>
+            <div id="botonNavegacion">
+                {{>toAdminPanel}}
             </div>
-        <input type="reset" value="Borrar todo"/>
-        <input type="submit" value="Agregar datos de pieza"/>
-        </form>
+            <form>
+                <table>
+                    <td>
+                        <div>
+                            <label>Titulo de pieza</label>
+                            <div>
+                                <input name="nombrepieza" id="nombrepieza" type="text" value="" placeholder="Ingrese el titulo"/>
+                            </div>
+                        </div>
+                        <div>
+                            <label>Categoria (Historia,etno,etc.)</label>
+                            <div>
+                                <input name="cat" id="cat" type="text" value="" placeholder="Ingrese cat"/>
+                            </div>
+                        </div>
+                        <div>
+                            <label>Natural o cultural?</label>
+                            <div>
+                                <input name="natocult" id="natocult" type="text" value="" placeholder="Nat o cult?"/>
+                            </div>
+                        </div>
+                        <div>
+                            <label>Material o Inmaterial?</label>
+                            <div>
+                                <input name="matoinmat" id="matoinmat" type="text" value="" placeholder="Mat o inmat?"/>
+                            </div>
+                        </div>
+                        <div>
+                            <label>Es un patrimonio cientifico?</label>
+                            <div>
+                                 <input name="patcient" id="patcient" type="text" value="" placeholder="Si o no?"/>
+                            </div>
+                        </div>
+                        <div>
+                            <label>Ingrese las dimensiones (cm)</label>
+                            <div>
+                                <input name="anchodim" id="anchodim" type="number" value="" placeholder="Ancho"/>
+                                <br>
+                                <input name="largodim" id="largodim" type="number" value="" placeholder="Largo"/>
+                                <br>
+                                <input name="altodim" id="altodim" type="number" value="" placeholder="Alto"/>
+                                <br>
+                            </div>
+                        </div>
+                        <div>
+                            <label>Que tecnica se uso?</label>
+                            <div>
+                                <input name="tecnica" id="tecnica" type="text" value="" placeholder="Escultura, pintura, arquitectura?"/>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <label>Tipo de medio audiovisual</label>
+                            <div>
+                                <input name="audio" id="audio" type="text" value="" placeholder="Cual es el medio?"/>
+                            </div>
+                        </div>
+                        <div>
+                            <label>Ubicacion actual en el museo</label>
+                            <div>
+                                <input name="ubic" id="ubic" type="text" value="" placeholder="Describa la ubicacion"/>
+                            </div>
+                        </div>
+                        <div>
+                            <label>Estado de conservacion</label>
+                            <div>
+                                <input name="conserv" id="conserv" type="text" value="" placeholder="Bueno o malo?"/>
+                            </div>
+                        </div>
+                        <div>
+                            <label>URL de la imagen</label>
+                            <div>
+                                <input name="imagen" id="imagen" type="url" value="" placeholder="http://"/>
+                            </div>
+                        </div>
+                        <div>
+                            {{>subir}}
+                        </div>
+                    </td>
+                </table>
+                <div>
+                    <li class="horizon">Fecha de creación entre:</li>
+                    <li class="horizon"> <input name="anodesd" id="anodesd" type="date" value="" placeholder="Entre el ano"/></li>
+                    <li class="horizon">Y</li>
+                    <li class="horizon"><input name="anohasta" id="anohasta" type="date" value="" placeholder="Hasta el ano"/></li>
+                </div>
+                <input type="reset" value="Borrar todo"/>
+                <input type="submit" value="Agregar datos de pieza"/>
+            </form>
         </div>
         <div id="vistaprevia">
                 <center><strong>Última pieza añadida a la colección:</strong></center>
                 <br>
                 {{>previewPiece}}
         </div>
-</div>
+    </div>
 </template>

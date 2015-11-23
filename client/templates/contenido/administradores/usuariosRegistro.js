@@ -1,6 +1,5 @@
 Template.baseusuario.helpers({
-        Iam: function(){
-                return Meteor.users();
-        }
-        
+    Iam: function(){
+        return Meteor.users();
+    }
 });
