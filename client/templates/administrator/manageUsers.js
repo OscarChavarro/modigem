@@ -9,7 +9,7 @@ Router.route("/manageUsers", {
         var combine = {
             ready: function() {
                 return Meteor.subscribe("userRole") && Meteor.subscribe("allUsers");
-            }	
+            }   
         };
         return combine;
     }
@@ -18,8 +18,8 @@ Router.route("/manageUsers", {
 //============================================================================
 
 Template.manageUsers.helpers({
-	"allUsers": function() {
-    	var cursor = Meteor.users.find();
-		return Meteor.users.find();
-	}
+        "allUsers": function() {
+        var cursor = Meteor.users.find();
+                return Meteor.users.find();
+        }
 });

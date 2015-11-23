@@ -8,7 +8,7 @@ Template.subir.events({
         else
             console.log('Success')
     });
-	var actualImages = images.find();
-	imageClon.insert(actualImages);
+        var actualImages = images.find();
+        imageClon.insert(actualImages);
 }
 });
