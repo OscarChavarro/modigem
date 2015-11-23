@@ -60,6 +60,12 @@ y opciones de respuesta.
             </li>
         </ul>
 
+        Nombre del formulario:
+        <form id="changeFormName">
+            <input type="text" name="newName" id={{idFromMongoObject getFormId}} value={{getFormName}}>
+            <input type="submit" value="¡Cambiar nombre!">
+        </form>
+
         El formulario actualmente tiene las siguientes preguntas:
 
         <table border = "2" width="100%">

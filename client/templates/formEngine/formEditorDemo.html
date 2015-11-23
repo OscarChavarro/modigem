@@ -1,7 +1,16 @@
+<!-- 
+Plantilla privada.
+-->
 <template name="formEditorDemoLoading">
     Cargando información de la base de datos.
 </template>
 
+<!--
+Plantilla pública.
+
+Esta página permite gestionar todos los formularios disponibles. Permite
+crear, modificar y borrar formularios.
+-->
 <template name="formEditorDemo">
     <h1>Editor de formularios</h1>
 
@@ -15,9 +24,38 @@
     identificadores de ejemplo para probar el acceso al módulo de editor
     de formularios.
 
-    <ul>
-        <li>Editar el formulario con identificador 
-            <a id="setFormId" data-id="606160e557f40f54b2921f5f" href="/formEditor">0</a>
-        </li>
-    </ul>
+    <table border="2">
+        <tr>
+            <th>ID</th>
+            <th>NOMBRE</th>
+            <th>BORRAR</th>
+        </tr>
+        {{#each allForms}}
+            <tr>
+                <td>
+                    <a id="setFormId" 
+                        data-id={{idFromMongoObject this._id}} 
+                        href="/formEditor">
+                        {{idFromMongoObject this._id}}
+                    </a>
+                </td>
+                <td>
+                    {{this.nameSpa}}
+                </td>
+                <td>
+                    <form class="deleteForm" id={{idFromMongoObject this._id}}>
+                        <input type="submit" value="¡Borrar!">
+                    </form>
+                </td>
+            </tr>
+        {{/each}}
+        <tr>
+            <td colspan="3">
+                <form id="createForm">
+                    <input type="submit" value="¡Crear un nuevo formulario!">
+                </form>
+            </td>
+        </tr>
+    </table>
+
 </template>

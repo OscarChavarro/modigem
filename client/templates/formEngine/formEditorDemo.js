@@ -7,12 +7,26 @@ formularios.
 Router.route("/formEditorDemo", {
     name: "formEditorDemo",
     loadingTemplate: "formEditorDemoLoading",
+    /**
+    */
     data: function () {
         return true;
+    },
+    /**
+    */
+    waitOn: function() {
+        return Meteor.subscribe("serviceRequestForm");
     }
 });
 
 //============================================================================
+Template.formEditorDemo.helpers({
+    /**
+    */
+    allForms: function() {
+        return serviceRequestForm.find();
+    }
+});
 
 Template.formEditorDemo.events({
     /**
@@ -31,5 +45,25 @@ Template.formEditorDemo.events({
                 id + " para edición");
             Session.set("formId", id);
         }
-    } 
+    },
+    /**
+    */
+    "submit #createForm": function(event, template) {
+        event.preventDefault();
+        var oid = new Mongo.ObjectID();
+        var filter = {_id: oid};
+        serviceRequestForm.insert(filter);
+    },
+    /**
+    */
+    "submit .deleteForm": function(event, template) {
+        event.preventDefault();
+        var id = event.target.id;
+
+        console.log("Quiero borrar a " + id);
+
+        var oid = new Mongo.ObjectID(id);
+        var filter = {_id: oid};
+        var x = serviceRequestForm.remove(filter);
+    }
 });

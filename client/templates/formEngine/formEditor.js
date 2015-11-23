@@ -368,6 +368,17 @@ Template.formEditor.helpers({
         return false;
     },
     /**
+    */
+    getFormName()
+    {
+        var selectedServiceRequestForm = Session.get("selectedServiceRequestForm");
+
+        if ( valid(selectedServiceRequestForm) && valid(selectedServiceRequestForm.nameSpa) ) {
+            return selectedServiceRequestForm.nameSpa;
+        }
+        return "Nombre vacío";
+    },
+    /**
     Realiza un llamado al procedimiento remoto "getQueriesFromFormId" en el
     lado del servidor y hace disponible la información de las preguntas como
     una variable de sesión que constituye un caché para la sesión de usuario
@@ -614,6 +625,29 @@ Template.formEditor.helpers({
 */
 Template.formEditor.events({
     /**
+    */
+    "submit #changeFormName": function (event, template) {
+        event.preventDefault();
+        var newName = event.target.newName.value;
+        var id = event.target.newName.id;
+
+        if ( !valid(newName) || !valid(id) ) {
+            return;
+        }
+
+        var oid = new Mongo.ObjectID(id);
+        var filter = {_id: oid};
+        //var f = serviceRequestForm.findOne(filter);
+        //if ( !valid(f) ) {
+        //    serviceRequestForm.update();
+        //    console.log("nono");
+        //    return;
+        //}
+        console.log("sisi");
+        var object = {nameSpa: newName};
+        serviceRequestForm.update(filter, {$set: object}); 
+    },
+    /**
     Esta función toma un texto que el usuario ha entrado como nuevo contenido de
     opción de respuesta a una pregunta de selección múltiple y la ingresa al
     modelo de formulario.
@@ -621,7 +655,7 @@ Template.formEditor.events({
     PRE: El formulario al cual se le procesa el submit tiene un campo de texto
     llamado "newOption" que contiene valores válidos en sus atributos id y un text.
     */
-    "submit #addAnswerOptionForm": function (event) {
+    "submit #addAnswerOptionForm": function (event, template) {
         event.preventDefault();
 
         var id = event.target.newOption.id;
