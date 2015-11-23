@@ -25,6 +25,126 @@ Router.route("/serviceRequestFormCreateEdit", {
 });
 
 //============================================================================
+
+/**
+*/
+var customMultipleChoicesEditorForm = function(queryId, queryType) 
+{
+    var html;
+
+    html = '<table border="2">';
+
+    var varname = "EditAnswerOptionsFor" + queryId;
+    var choices = Session.get(varname);
+
+    var i;
+
+    for ( i in choices ) {
+        html += '<tr><td>';
+        html += '<div class="col-md-6">';
+        html += '    <form id=' + queryId + ' class="editMultipleChoiceForm">';
+        html += '        <input type="text" id="' + choices[i]._id + '" name="content" value="' + choices[i].nameSpa + '">';
+        html += '    </form>';
+        html += '</div>';
+        /*
+        html += '<div class="col-md-2">';
+        html += '    <form id=' + queryId + ' class="upMultipleChoiceForm">';
+        html += '        <input type="submit" id="' + choices[i]._id + '" name="button" value="subir">';
+        html += '    </form>';
+        html += '</div>';
+        html += '<div class="col-md-2">';
+        html += '    <form id=' + queryId + ' class="downMultipleChoiceForm">';
+        html += '        <input type="submit" id="' + choices[i]._id + '" name="button" value="bajar">';
+        html += '    </form>';
+        html += '</div>';
+        */
+        html += '<div class="col-md-2">';
+        html += '    <form id=' + queryId + ' class="deleteMultipleChoiceForm">';
+        html += '        <input type="submit" id="' + choices[i]._id + '" name="button" value="borrar">';
+        html += '    </form>';
+        html += '</div>';
+        html += '</td></tr>';
+    }
+
+    html += '<tr>';
+    html += '<td>';
+    html += '<form class="createMultipleChoiceForm">';
+    html += '    <input type="text" id="' + queryId + '" name="newOption" value="" >';
+    html += '    <input type="submit" value="Agregar opción de respuesta">';
+    html += '</form>';
+    html += '</td>';
+    html += '</tr>';
+    html += '</table>';
+
+    return html;
+}
+
+/**
+*/
+var showMultipleChoicesEditorForm = function(queryId, queryType) 
+{
+    var html;
+
+    html = '';
+
+    var varname = "EditAnswerOptionsFor" + queryId;
+    var choices = Session.get(varname);
+
+    var i;
+
+    for ( i in choices ) {
+        html += '<li>';
+        html += choices[i].nameEng;
+        html += '</li>';
+    }
+
+    return html;
+}
+
+/**
+Limpia el caché de opciones de respuesta para la pregunta especificada.
+*/
+var updateAnswerOptionsCacheForQueryId = function(questionId)
+{
+    var varnamecached = "EditAnswerOptionsFor" + questionId;
+    Session.get(varnamecached, null);
+    Meteor.call("getAnswerOptionsFromQueryId", questionId, function(error, response) 
+        {
+            if ( valid(error) ) {
+                console.log("Error  llamando answerOptionsListReady");
+            }
+            else if ( valid(response) && valid(response.id) && valid(response.array) ) {
+                console.log("  - Recibo respuesta del RPC");
+                var varname = "EditAnswerOptionsFor" + response.id;
+                Session.set(varname, response.array);
+            }
+        }
+    );
+}
+
+/**
+Limpia el caché de preguntas para el formulario actual.
+*/
+var updateEditQueryArrayForFormId = function(fid)
+{
+    var varnamereset = "EditQueryArrayFor" + fid;
+    
+    // Borra el caché, ya que en modo edición la información cambia
+    Session.set(varnamereset, null);
+    Meteor.call("getQueriesFromFormId", fid, 
+        function(err, response) {
+            if ( valid(err) ) {
+                console.log("  - Mensaje de error: " + err);
+            }
+            else if ( valid(response) && 
+                valid(response.id) && valid(response.array) ) {
+                var varname = "EditQueryArrayFor" + response.id;
+                Session.set(varname, response.array);
+            }
+        }
+    );
+}
+
 /**
 Exporta la colección de la conexión a la base de datos MongoDB para hacerla 
 disponible como una variable en el contexto Sidebar.
@@ -246,54 +366,7 @@ Template.serviceRequestFormCreateEdit.helpers({
         });
 
         return false;
-    }
-});
-
-/**
-Limpia el caché de opciones de respuesta para la pregunta especificada.
-*/
-var updateAnswerOptionsCacheForQueryId = function(questionId)
-{
-    var varnamecached = "EditAnswerOptionsFor" + questionId;
-    Session.get(varnamecached, null);
-    Meteor.call("getAnswerOptionsFromQueryId", questionId, function(error, response) 
-        {
-            if ( valid(error) ) {
-                console.log("Error  llamando answerOptionsListReady");
-            }
-            else if ( valid(response) && valid(response.id) && valid(response.array) ) {
-                console.log("  - Recibo respuesta del RPC");
-                var varname = "EditAnswerOptionsFor" + response.id;
-                Session.set(varname, response.array);
-            }
-        }
-    );
-}
-
-/**
-Limpia el caché de preguntas para el formulario actual.
-*/
-var updateEditQueryArrayForFormId = function(fid)
-{
-    var varnamereset = "EditQueryArrayFor" + fid;
-    
-    // Borra el caché, ya que en modo edición la información cambia
-    Session.set(varnamereset, null);
-    Meteor.call("getQueriesFromFormId", fid, 
-        function(err, response) {
-            if ( valid(err) ) {
-                console.log("  - Mensaje de error: " + err);
-            }
-            else if ( valid(response) && 
-                valid(response.id) && valid(response.array) ) {
-                var varname = "EditQueryArrayFor" + response.id;
-                Session.set(varname, response.array);
-            }
-        }
-    );
-}
-
-Template.serviceRequestFormCreateEdit.helpers({
+    },
     /**
     Realiza un llamado al procedimiento remoto "getQueriesFromFormId" en el
     lado del servidor y hace disponible la información de las preguntas como
@@ -392,201 +465,7 @@ Template.serviceRequestFormCreateEdit.helpers({
         html +='    <input type="submit" id="' + this._id + '" name="down" value="Bajar en orden" class="btn btn-primary btn-block" style="padding:0">';
         html += '</form>'; 
         return html;
-    }
-});
-
-/**
-*/
-Template.serviceRequestFormCreateEdit.events({
-    "submit .createMultipleChoiceForm": function (event) {
-        event.preventDefault();
-        var id = event.target.newOption.id;
-        var text = event.target.newOption.value;
-
-        var o = {parentServiceRequestFormQueryId:id, nameSpa:text};
-        serviceRequestAnswerOption.insert(o);
-
-        updateAnswerOptionsCacheForQueryId(id);
-
-        return false;
-    }
-});
-
-/**
-*/
-Template.serviceRequestFormCreateEdit.events({
-    "submit .editMultipleChoiceForm": function (event) {
-        event.preventDefault();
-        var id = event.target.content.id;
-        var text = event.target.content.value;
-        var qid = event.target.id;
-
-        console.log("Texto: " + text);
-        console.log("Option id: " + id);
-        console.log("Question id: " + qid);
-
-        if ( !valid(qid) ) {
-            return false;
-        }
-        var filter1 = {_id:id};
-        var filter2 = {_id: new Mongo.ObjectID(id)};
-        var object = {nameSpa:text};
-
-        serviceRequestAnswerOption.update(filter1, {$set: object}); 
-        serviceRequestAnswerOption.update(filter2, {$set: object}); 
-        updateAnswerOptionsCacheForQueryId(qid);
-
-        return false;
-    }
-});
-
-/**
-*/
-Template.serviceRequestFormCreateEdit.events({
-    "submit .upMultipleChoiceForm": function (event) {
-        event.preventDefault();
-        var id = event.target.button.id;
-        var qid = event.target.id;
-
-        if ( !valid(qid) ) {
-            return false;
-        }
-
-        if ( valid(id) ) {
-            var o = {parentServiceRequestFormQueryId:id, nameSpa:text};
-            serviceRequestAnswerOption.insert(o); 
-            console.log("UP ID: " + id);
-        }
-        else {
-            console.log("  - Error: no hay id en el target button para up");
-        }
-        updateAnswerOptionsCacheForQueryId(qid);
-
-        return false;
-    }
-});
-
-/**
-*/
-Template.serviceRequestFormCreateEdit.events({
-    "submit .downMultipleChoiceForm": function (event) {
-        event.preventDefault();
-        var id = event.target.button.id;
-        var qid = event.target.id;
-
-        if ( !valid(qid) ) {
-            return false;
-        }
-
-        if ( valid(id) ) {
-            console.log("DOWN ID: " + id);
-            var o = {parentServiceRequestFormQueryId:id, nameSpa: text};
-            serviceRequestAnswerOption.insert(o); 
-        }
-        else {
-            console.log("  - Error: no hay id en el target button para down");
-        }
-        updateAnswerOptionsCacheForQueryId(qid);
-
-        return false;
-    }
-});
-
-/**
-*/
-Template.serviceRequestFormCreateEdit.events({
-    "submit .deleteMultipleChoiceForm": function (event) {
-        event.preventDefault();
-        var id = event.target.button.id;
-        var qid = event.target.id;
-
-        if ( !valid(qid) ) {
-            return false;
-        }
-
-        var filter = {_id:id};
-        serviceRequestAnswerOption.remove(filter); 
-        updateAnswerOptionsCacheForQueryId(qid);
-
-        return false;
-    }
-});
-
-/**
-*/
-var customMultipleChoicesEditorForm = function(queryId, queryType) 
-{
-    var html;
-
-    html = '<table border="2">';
-
-    var varname = "EditAnswerOptionsFor" + queryId;
-    var choices = Session.get(varname);
-
-    var i;
-
-    for ( i in choices ) {
-        html += '<tr><td>';
-        html += '<div class="col-md-6">';
-        html += '    <form id=' + queryId + ' class="editMultipleChoiceForm">';
-        html += '        <input type="text" id="' + choices[i]._id + '" name="content" value="' + choices[i].nameSpa + '">';
-        html += '    </form>';
-        html += '</div>';
-        /*
-        html += '<div class="col-md-2">';
-        html += '    <form id=' + queryId + ' class="upMultipleChoiceForm">';
-        html += '        <input type="submit" id="' + choices[i]._id + '" name="button" value="subir">';
-        html += '    </form>';
-        html += '</div>';
-        html += '<div class="col-md-2">';
-        html += '    <form id=' + queryId + ' class="downMultipleChoiceForm">';
-        html += '        <input type="submit" id="' + choices[i]._id + '" name="button" value="bajar">';
-        html += '    </form>';
-        html += '</div>';
-        */
-        html += '<div class="col-md-2">';
-        html += '    <form id=' + queryId + ' class="deleteMultipleChoiceForm">';
-        html += '        <input type="submit" id="' + choices[i]._id + '" name="button" value="borrar">';
-        html += '    </form>';
-        html += '</div>';
-        html += '</td></tr>';
-    }
-
-    html += '<tr>';
-    html += '<td>';
-    html += '<form class="createMultipleChoiceForm">';
-    html += '    <input type="text" id="' + queryId + '" name="newOption" value="" >';
-    html += '    <input type="submit" value="Agregar opción de respuesta">';
-    html += '</form>';
-    html += '</td>';
-    html += '</tr>';
-    html += '</table>';
-
-    return html;
-}
-/**
-*/
-var showMultipleChoicesEditorForm = function(queryId, queryType) 
-{
-    var html;
-
-    html = '';
-
-    var varname = "EditAnswerOptionsFor" + queryId;
-    var choices = Session.get(varname);
-
-    var i;
-
-    for ( i in choices ) {
-        html += '<li>';
-        html += choices[i].nameEng;
-        html += '</li>';
-    }
-
-    return html;
-}
-
-Template.serviceRequestFormCreateEdit.helpers({
+    },
     /**
     Esta función retorna un arreglo con los tipos de preguntas en la
     base de datos del sistema (que es un número pequeño de opciones).
@@ -705,12 +584,137 @@ Template.serviceRequestFormCreateEdit.helpers({
         }
         
         return html;
-    }
+    },
+    /**
+    Esta función es llamada por el CRUD de edición de formularios para llenar
+    el contenido de un diálogo modal y permitir que el usuario administrador
+    (editor de formularios) pueda probar cómo está quedando el formulario
+    que está haciendo.
+    */
+    testDialog: function () {
+        console.log("Armando formulario de prueba!");
+
+        var srf = Session.get("selectedServiceRequestForm");
+
+        if ( !valid(srf) ) {
+            var msg = "Error: No hay un formulario seleccionado para testDialog";
+            console.log(msg);
+            return msg;
+        }
+
+        var formString = "<form class=\"testDialogForm\">"
+        formString = buildForm(srf._id);
+        formString += "</form>";
+
+        return formString;
+    }    
 });
 
 /**
 */
 Template.serviceRequestFormCreateEdit.events({
+    "submit .createMultipleChoiceForm": function (event) {
+        event.preventDefault();
+        var id = event.target.newOption.id;
+        var text = event.target.newOption.value;
+
+        var o = {parentServiceRequestFormQueryId:id, nameSpa:text};
+        serviceRequestAnswerOption.insert(o);
+
+        updateAnswerOptionsCacheForQueryId(id);
+
+        return false;
+    },
+    /**
+    */
+    "submit .editMultipleChoiceForm": function (event) {
+        event.preventDefault();
+        var id = event.target.content.id;
+        var text = event.target.content.value;
+        var qid = event.target.id;
+
+        console.log("Texto: " + text);
+        console.log("Option id: " + id);
+        console.log("Question id: " + qid);
+
+        if ( !valid(qid) ) {
+            return false;
+        }
+        var filter1 = {_id:id};
+        var filter2 = {_id: new Mongo.ObjectID(id)};
+        var object = {nameSpa:text};
+
+        serviceRequestAnswerOption.update(filter1, {$set: object}); 
+        serviceRequestAnswerOption.update(filter2, {$set: object}); 
+        updateAnswerOptionsCacheForQueryId(qid);
+
+        return false;
+    },
+    /**
+    */
+    "submit .upMultipleChoiceForm": function (event) {
+        event.preventDefault();
+        var id = event.target.button.id;
+        var qid = event.target.id;
+
+        if ( !valid(qid) ) {
+            return false;
+        }
+
+        if ( valid(id) ) {
+            var o = {parentServiceRequestFormQueryId:id, nameSpa:text};
+            serviceRequestAnswerOption.insert(o); 
+            console.log("UP ID: " + id);
+        }
+        else {
+            console.log("  - Error: no hay id en el target button para up");
+        }
+        updateAnswerOptionsCacheForQueryId(qid);
+
+        return false;
+    },
+    /**
+    */
+    "submit .downMultipleChoiceForm": function (event) {
+        event.preventDefault();
+        var id = event.target.button.id;
+        var qid = event.target.id;
+
+        if ( !valid(qid) ) {
+            return false;
+        }
+
+        if ( valid(id) ) {
+            console.log("DOWN ID: " + id);
+            var o = {parentServiceRequestFormQueryId:id, nameSpa: text};
+            serviceRequestAnswerOption.insert(o); 
+        }
+        else {
+            console.log("  - Error: no hay id en el target button para down");
+        }
+        updateAnswerOptionsCacheForQueryId(qid);
+
+        return false;
+    },
+    /**
+    */
+    "submit .deleteMultipleChoiceForm": function (event) {
+        event.preventDefault();
+        var id = event.target.button.id;
+        var qid = event.target.id;
+
+        if ( !valid(qid) ) {
+            return false;
+        }
+
+        var filter = {_id:id};
+        serviceRequestAnswerOption.remove(filter); 
+        updateAnswerOptionsCacheForQueryId(qid);
+
+        return false;
+    },
+    /**
+    */
     "submit #formExport": function(event, template) {
         event.preventDefault();
         Meteor.call("writeToFile", "archivo.html", "Hola", function(error, response){
@@ -754,12 +758,9 @@ Template.serviceRequestFormCreateEdit.events({
         });
         
         return true;
-    }
-});
-
-/**
-*/
-Template.serviceRequestFormCreateEdit.events({
+    },
+    /**
+    */
     "submit .editQueryForm": function (event) {
         event.preventDefault();
 
@@ -783,12 +784,7 @@ Template.serviceRequestFormCreateEdit.events({
         updateEditQueryArrayForFormId(form._id);
 
         return true;
-    }
-});
-
-/**
-*/
-Template.serviceRequestFormCreateEdit.events({
+    },
     /**
     Esta función es llamada cuando el usuario da click en el botón de agregar
     una nueva pregunta a un formulario.
@@ -837,12 +833,9 @@ Template.serviceRequestFormCreateEdit.events({
         updateEditQueryArrayForFormId(form._id);
 
         return false;
-    }
-});
-
-/**
-*/
-Template.serviceRequestFormCreateEdit.events({
+    },
+    /**
+    */
     "submit #formTest": function (event, template) {
         event.preventDefault();
         
@@ -866,12 +859,9 @@ Template.serviceRequestFormCreateEdit.events({
 
         $('#dialogTestForm').modal("show");
         return true;
-    }
-});
-
-/**
-*/
-Template.serviceRequestFormCreateEdit.events({
+    },
+    /**
+    */
     "submit .selectQueryTypeForm": function (event) {
         event.preventDefault();
         var form = event.target;
@@ -893,16 +883,12 @@ Template.serviceRequestFormCreateEdit.events({
         updateEditQueryArrayForFormId(form._id);
 
         return false;
-    }
-});
-
-/**
-Esta función es llamada cuando se desea eliminar una pregunta de un
-formulario. Recibe el identificador de la pregunta a eliminar en
-"delete.id" dentro de la forma.
-*/
-Template.serviceRequestFormCreateEdit.events({
+    },
     /**
+    Esta función es llamada cuando se desea eliminar una pregunta de un
+    formulario. Recibe el identificador de la pregunta a eliminar en
+    "delete.id" dentro de la forma.
+
     Esta función es llamada cuando el usuario presiona el botón
     correspondiente a la eliminación de una pregunta de un
     formulario.
@@ -938,32 +924,6 @@ Template.serviceRequestFormCreateEdit.events({
         });
 
         return false;
-    }
-});
-
-/**
-Esta función es llamada por el CRUD de edición de formularios para llenar
-el contenido de un diálogo modal y permitir que el usuario administrador
-(editor de formularios) pueda probar cómo está quedando el formulario
-que está haciendo.
-*/
-Template.serviceRequestFormCreateEdit.helpers({
-    testDialog: function () {
-        console.log("Armando formulario de prueba!");
-
-        var srf = Session.get("selectedServiceRequestForm");
-
-        if ( !valid(srf) ) {
-            var msg = "Error: No hay un formulario seleccionado para testDialog";
-            console.log(msg);
-            return msg;
-        }
-
-        var formString = "<form class=\"testDialogForm\">"
-        formString = buildForm(srf._id);
-        formString += "</form>";
-
-        return formString;
     }
 });
 
