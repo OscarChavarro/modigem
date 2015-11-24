@@ -15,14 +15,8 @@ Template.signUpForm.events({
         /*Se llena el formulario del usuario en la coleccion de usuarios registrados*/
         Accounts.createUser({email: logemail, username: logname, password: logpassword});
         setTimeout(function(){
-            if (Meteor.user()) {
-                if (adminList.find({newAdmin: Meteor.user().username}).count() + 1 > 1){
-                    Router.go('adminPanel');
-                }else{
-                    Router.go('userPanel');
-                }
-            }
-        },800);
+		Router.go('userPanel');
+        },4000);
     return false; 
         /*Se crea el usuario y se redirecciona a su panel de trabajo*/
     }

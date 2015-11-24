@@ -2,7 +2,7 @@ Template.goToPanelBut.events({
     'click button': function(e) { 
         setTimeout(function(){
             if (Meteor.user()) {
-                if (adminList.find({newAdmin: Meteor.user().username}).count() + 1 > 1){
+                if (user2Role.find({rol: userRole.findOne({nameC: 'ADMINISTRATOR'})._id, user: Meteor.user()._id}).count() +1> 1){
                     Router.go('adminPanel');
                 }else{
                     Router.go('userPanel');
