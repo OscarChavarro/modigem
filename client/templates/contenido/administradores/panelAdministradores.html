@@ -1,5 +1,6 @@
 <template name="adminPanel">
-    <div class="contenidos">
+<div class="contenidos">
+{{#if ADMIN true}}
         <div id="mostrarPiezas">
             <center><strong>Piezas añadidas a la colección</strong></center>
             <br>
@@ -15,11 +16,15 @@
         {{>addLandingText}}
     </div>
     <div id="administrarAdmins">
-        {{>addAdmin}}
+        {{>addUser2Role}}
         <div id="mostrarAdmins">
-            {{>checkAdmin}}
+            {{>checkRoles}}
         </div>
     </div>
     <br>
-    </div>
+    
+{{else}}
+{{>paginaNoExiste}}
+{{/if}}
+     </div>
 </template>
