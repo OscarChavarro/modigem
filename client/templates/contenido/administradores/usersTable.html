@@ -1,17 +1,16 @@
-<template name="baseusuario">
-    <h3>Base de datos de Usuario</h3>
+<template name="usersTable">
+    <h3>Usuarios registrados</h3>
     <table>
         <tr id="encabezado">
             <td><u>Usuario</u></td>
-            <td><u>Correo</u></td>
+            <td><u>Id</u></td>
                 
         </tr>
         <br>
-        {{#each user}}
+        {{#each USER}}
         <tr>
             <td>{{username}}</td>
 			<td>{{_id}}</td>
-            <td>{{emails}}</td>
         </tr>
         {{/each}}
     </table>
