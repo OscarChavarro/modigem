@@ -22,11 +22,12 @@
         </table>
 		<table>
             <tr><strong>Descripcion:&nbsp;&nbsp;</strong>{{piece.descripcion}}</tr>
-			<tr><strong>Categoria:&nbsp;&nbsp;</strong>{{piece.categoria}}</tr>
+        </table>
+		<table>
+            <tr><strong>La pieza es de tipo:&nbsp;&nbsp;</strong>{{piece.categoria}}</tr>
         </table>
         <table>
-            
-            
+               {{>currentCategoria}}
         </table>
         <table>
             <tr><strong>Elaborado entre:&nbsp;</strong>{{piece.inicio}}&nbsp;y&nbsp;{{piece.fin}}</tr>

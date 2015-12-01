@@ -19,33 +19,28 @@ Template.formularioPieza1.helpers({
         return Template.instance().Auditivo.get();
     }
 });
-
 Template.formularioPieza1.events({
 	'click label': function( event, template ) {
-        if ( $( event.target ).val() === "1" ) {
+        if ( $( event.target ).val() === "Visual" ) {
             template.Visual.set( true );
-			tipo='Visual';
 		    template.Texto.set(false);
             template.AudioVisual.set(false);
             template.Auditivo.set(false);	
-	    } else if ( $( event.target ).val() === "2" ){
+	    } else if ( $( event.target ).val() === "Texto" ){
 		    template.Visual.set(false);
 		    template.Texto.set(true);
-			tipo='Texto';
             template.AudioVisual.set(false);
             template.Auditivo.set(false);
-	    } else if ( $( event.target ).val() === "3" ){
+	    } else if ( $( event.target ).val() === "AudioVisual" ){
 		    template.Visual.set(false);
 		    template.Texto.set(false);
             template.AudioVisual.set(true);
-			tipo='Audiovisual';
             template.Auditivo.set(false);
-	    } else if ($( event.target ).val() === "4") {
+	    } else if ($( event.target ).val() === "Auditivo") {
 		    template.Visual.set(false);
 		    template.Texto.set(false);
             template.AudioVisual.set(false);
             template.Auditivo.set(true);
-			tipo='Auditivo';
 	    } else {
 			template.Visual.set(false);
 		    template.Texto.set(false);
@@ -53,13 +48,20 @@ Template.formularioPieza1.events({
             template.Auditivo.set(false);
 		}
   },
-  'submit form': function(e) {
+    'submit form': function(e) {
+        e.preventDefault();
+		var llorar= document.getElementsByName("medio");
+            for(var i=0; i<llorar.length; i++) {
+				if (llorar[i].checked==true) {
+                inputTipo = llorar[i].value;
+				}
+            }
         var NuevaPieza = {
             nombre1: $(e.target).find('[name=nombrepieza]').val(),
             nombre2: $(e.target).find('[name=nombrepopular]').val(),
             etiqueta: $(e.target).find('[name=etiqueta]').val(),
             descripcion: $(e.target).find('[name=descripcion]').val(),
-			categoria: tipo,
+		    categoria: inputTipo,
 		    obra: $(e.target).find('[name=obra]').val(),
             tecnica: $(e.target).find('[name=tecnica]').val(),
             dimensiones: $(e.target).find('[name=dimensiones]').val(),
@@ -79,8 +81,8 @@ Template.formularioPieza1.events({
             imagenID: images.find().fetch()[images.find().count()-1]._id
         };
         piece.insert(NuevaPieza);
+		
         
     }
-  
 	
 });
