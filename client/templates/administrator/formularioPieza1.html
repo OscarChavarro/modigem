@@ -1,98 +1,149 @@
 <template name="formularioPieza1">
     <div class= "contenidos">
         <div id="formulariosdePiezas">
-            <div id="botonNavegacion">
-                {{>toAdminPanel}}
-            </div>
             <form>
                 <table>
-                    <td>
-                        <div>
-                            <label>Titulo de pieza</label>
-                            <div>
-                                <input name="nombrepieza" id="nombrepieza" type="text" value="" placeholder="Ingrese el titulo"/>
+				    <tr>
+				    <td width="50%">
+					  <div>
+					   {{>toAdminPanel}}
+					  </div>
+                      <div>
+                            <label>Nombre de la pieza</label>
+                            <div class="class-formgroup">
+                                <input  class="form-control" name="nombrepieza" type="text" value="" placeholder="Ingrese Nombre de la pieza"/>
                             </div>
                         </div>
                         <div>
-                            <label>Categoria (Historia,etno,etc.)</label>
-                            <div>
-                                <input name="cat" id="cat" type="text" value="" placeholder="Ingrese cat"/>
+                            <label>Nombre Popular de la pieza</label>
+                            <div class="class-formgroup">
+                                <input class="form-control" name="nombrepopular" type="text" value="" placeholder="Ingrese Nombre popular de la pieza"/>
                             </div>
                         </div>
                         <div>
-                            <label>Natural o cultural?</label>
-                            <div>
-                                <input name="natocult" id="natocult" type="text" value="" placeholder="Nat o cult?"/>
+                            <label>Etiquetas</label>
+                            <div class="class-formgroup">
+                                <input class="form-control" name="etiqueta" type="text" value="" placeholder="bla, bla, bla"/>
                             </div>
                         </div>
-                        <div>
-                            <label>Material o Inmaterial?</label>
+                        <div class="class-formgroup">
+                            <label>Descripción de la pieza</label>
                             <div>
-                                <input name="matoinmat" id="matoinmat" type="text" value="" placeholder="Mat o inmat?"/>
+                                <textarea class="form-control" rows="3" name="descripcion" value="" placeholder="Ingrese breve descripcion de la pieza..."></textarea>
                             </div>
                         </div>
-                        <div>
-                            <label>Es un patrimonio cientifico?</label>
-                            <div>
-                                 <input name="patcient" id="patcient" type="text" value="" placeholder="Si o no?"/>
+                        <div class="class-formgroup">
+                            <label>Tipo de medio</label>
+                            <div class="radio-inline">
+                                <label>
+                                    <input class="checkboxs" type="checkbox" name="medio"  value="1">Visual
+                                </label>
+                            </div>
+                            <div class="radio-inline">
+                                <label>
+                                    <input  class="checkboxs" type="checkbox" name="medio"   value="2">Texto
+                                </label>
+                            </div>
+                            <div class="radio-inline">
+                                <label>
+                                    <input class="checkboxs" type="checkbox" name="medio"  value="3">AudioVisual
+                                </label>
+                            </div>
+							<div class="radio-inline">
+                                <label>
+                                    <input class="checkboxs" type="checkbox" name="medio"  value="4">Auditivo
+                                </label>
                             </div>
                         </div>
-                        <div>
-                            <label>Ingrese las dimensiones (cm)</label>
-                            <div>
-                                <input name="anchodim" id="anchodim" type="number" value="" placeholder="Ancho"/>
-                                <br>
-                                <input name="largodim" id="largodim" type="number" value="" placeholder="Largo"/>
-                                <br>
-                                <input name="altodim" id="altodim" type="number" value="" placeholder="Alto"/>
-                                <br>
+						<br>
+						{{#if Visual}}
+						    <div class="form-group">
+                                <label>Tipo de Obra</label>
+                                    <input class="form-control" name="obra" type="text" placeholder="Pintura, Arquitectonica, Escultura, Imagen...">
                             </div>
-                        </div>
-                        <div>
-                            <label>Que tecnica se uso?</label>
-                            <div>
-                                <input name="tecnica" id="tecnica" type="text" value="" placeholder="Escultura, pintura, arquitectura?"/>
+							<div class="form-group">
+                                <label>Tecnica empleada</label>
+                                    <input class="form-control" name="tecnica" type="text" placeholder="Oleo...">
                             </div>
-                        </div>
-                    </td>
-                    <td>
-                        <div>
-                            <label>Tipo de medio audiovisual</label>
-                            <div>
-                                <input name="audio" id="audio" type="text" value="" placeholder="Cual es el medio?"/>
+							<div class="form-group">
+                                <label>Dimensiones</label>
+                                    <input class="form-control" name="dimensiones" type="text" placeholder="Ancho x Largo">
                             </div>
-                        </div>
-                        <div>
-                            <label>Ubicacion actual en el museo</label>
-                            <div>
-                                <input name="ubic" id="ubic" type="text" value="" placeholder="Describa la ubicacion"/>
+							
+						{{/if}}
+						{{#if Texto}}
+						    <div class="form-group">
+                                <label>Numero de caracteres</label>
+                                    <input class="form-control" name="caracteres" type="text" placeholder="Ingerese numero de caracteres">
                             </div>
+							<div class="form-group">
+                                <label>Idioma</label>
+                                    <input class="form-control" name="idioma" type="text" placeholder="Ingerese Idioma">
+                            </div>
+						{{/if}}
+						{{#if AudioVisual}}
+						    <div class="form-group">
+                                <label>tiempo de Duracion</label>
+                                    <input class="form-control" name="tiempo" type="text" placeholder="00:00:00">
+                            </div>
+							<div class="form-group">
+                                <label>Formato</label>
+                                    <input class="form-control" name="formato" type="text" placeholder="mp4, hdmi, br...">
+                            </div>
+						{{/if}}
+						{{#if Auditivo}}
+						    <div class="form-group">
+                                <label>Tiempo de Duracion</label>
+                                    <input class="form-control" name="duracion" type="text" placeholder="00:00:00">
+                            </div>
+							<div class="form-group">
+                                <label>Streaming</label>
+                                    <input class="form-control" name="streaming" type="text" placeholder="stereo, mono...">
+                            </div>
+						{{/if}}
+						</td>
+						<td width="50%">
+						<div class="form-group">
+                            <label>Fecha de creación entre:</label>
+                            <input class="form-control" name="inicio" type="text" placeholder="Desde">
+                            <label>Y</label>
+                            <input class="form-control" name="fin" type="text" placeholder="Hasta">
                         </div>
-                        <div>
+						<div class="form-group">
+                                <label>Lugar de Origen</label>
+                                    <input class="form-control" name="origen" type="text" placeholder="Ingrese lugar de Origen">
+                        </div>
+						<div class="form-group">
+                                <label>Ubicacion Actual</label>
+                                    <input class="form-control" name="ubicacion" type="text" placeholder="Ingrese nombre del lugar">
+                        </div>
+                        <div class="form-group">
+                                <label>Coleccion a la que pertenece</label>
+                                    <input class="form-control" name="coleccion" type="text" placeholder="Ingrese nombre de la coleccion">
+                        </div>
+                        <div class="form-group">
                             <label>Estado de conservacion</label>
-                            <div>
-                                <input name="conserv" id="conserv" type="text" value="" placeholder="Bueno o malo?"/>
+                            <div class="radio-inline">
+                                <label>
+                                    <input class="form-control" name="estado" type="text" placeholder="Bueno, Malo, Reparada...">
+                                </label>
                             </div>
-                        </div>
-                        <div>
-                            <label>URL de la imagen</label>
-                            <div>
-                                <input name="imagen" id="imagen" type="url" value="" placeholder="http://"/>
-                            </div>
-                        </div>
+							                        
+						</div>
                         <div>
                             {{>subir}}
                         </div>
-                    </td>
+						</td>
+					</tr>
                 </table>
-                <div>
-                    <li class="horizon">Fecha de creación entre:</li>
-                    <li class="horizon"> <input name="anodesd" id="anodesd" type="date" value="" placeholder="Entre el ano"/></li>
-                    <li class="horizon">Y</li>
-                    <li class="horizon"><input name="anohasta" id="anohasta" type="date" value="" placeholder="Hasta el ano"/></li>
+				<center>
+				<div class="btn-group">
+				    
+                    <button type="reset" style="background-color:#3A3136" class="btn btn-default">Borrar Todo</button>
+                    <button type="submit" style="background-color:#3A3136" class="btn btn-default">Agregar a la coleccion</button>  
+					
                 </div>
-                <input type="reset" value="Borrar todo"/>
-                <input type="submit" value="Agregar datos de pieza"/>
+				</center>
             </form>
         </div>
         <div id="vistaprevia">

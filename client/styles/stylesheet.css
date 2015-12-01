@@ -175,12 +175,12 @@ z-index:2;
 }
 .contenidos {
         position:relative;
-        width:98%;
+        width:100%;
         margin:0 auto;
         min-height:550px;
         color: #3A3136;
         background: #ffffff;
-        height: 525px;
+        height: 650px;
         margin-top: 9%;
         
 }
@@ -197,8 +197,8 @@ z-index:2;
         float: right;
         color: #3A3136;
         background: #ffffff;
-        width: 49.8% ;
-        height: 525px;
+        width: 50%;
+        height: 650px;
         border:solid 1px #4e4f52;
         
 }
@@ -208,8 +208,8 @@ z-index:2;
         float: left;
         color: #3A3136;
         background: #ffffff;
-        width: 49.8% ;
-        height: 525px;
+        width: 50% ;
+        height: 650px;
         border:solid 1px #4e4f52;
         
 }
@@ -327,12 +327,13 @@ footer {
 #base{
         margin: 0 auto;
         width: 100%;
+		
 }
 .ficha{
         width: 90%;
-        height: 50%;
-        margin-left: 5%;
-        margin-top:1%;
+        height: 90%;
+		margin-left:5%;
+        
         
 }
 td.mitad{
