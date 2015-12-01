@@ -4,6 +4,11 @@ body {
         
         
 }
+#alinearDerecha {
+
+        float: right;
+        
+}
 #padre{
         
         position:relative;
