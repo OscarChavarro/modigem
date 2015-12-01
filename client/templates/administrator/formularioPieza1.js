@@ -19,28 +19,33 @@ Template.formularioPieza1.helpers({
         return Template.instance().Auditivo.get();
     }
 });
+
 Template.formularioPieza1.events({
 	'click label': function( event, template ) {
         if ( $( event.target ).val() === "1" ) {
             template.Visual.set( true );
+			tipo='Visual';
 		    template.Texto.set(false);
             template.AudioVisual.set(false);
             template.Auditivo.set(false);	
 	    } else if ( $( event.target ).val() === "2" ){
 		    template.Visual.set(false);
 		    template.Texto.set(true);
+			tipo='Texto';
             template.AudioVisual.set(false);
             template.Auditivo.set(false);
 	    } else if ( $( event.target ).val() === "3" ){
 		    template.Visual.set(false);
 		    template.Texto.set(false);
             template.AudioVisual.set(true);
+			tipo='Audiovisual';
             template.Auditivo.set(false);
 	    } else if ($( event.target ).val() === "4") {
 		    template.Visual.set(false);
 		    template.Texto.set(false);
             template.AudioVisual.set(false);
             template.Auditivo.set(true);
+			tipo='Auditivo';
 	    } else {
 			template.Visual.set(false);
 		    template.Texto.set(false);
@@ -48,24 +53,13 @@ Template.formularioPieza1.events({
             template.Auditivo.set(false);
 		}
   },
-    'submit form': function(e) {
-        e.preventDefault();
-		tipo    = $(e.target).find('[name=medio]').val();
-            if (tipo==1){
-                inputTipo='Visual';
-            } if (tipo==2){
-                inputTipo='Texto';
-            } if (tipo==3){
-                inputTipo='AudioVisual';
-            } if (tipo==4){
-                inputTipo='Auditivo';
-        }
+  'submit form': function(e) {
         var NuevaPieza = {
             nombre1: $(e.target).find('[name=nombrepieza]').val(),
             nombre2: $(e.target).find('[name=nombrepopular]').val(),
             etiqueta: $(e.target).find('[name=etiqueta]').val(),
             descripcion: $(e.target).find('[name=descripcion]').val(),
-			categoria:$(e.target).find('inputTipo').val(),
+			categoria: tipo,
 		    obra: $(e.target).find('[name=obra]').val(),
             tecnica: $(e.target).find('[name=tecnica]').val(),
             dimensiones: $(e.target).find('[name=dimensiones]').val(),
@@ -87,5 +81,6 @@ Template.formularioPieza1.events({
         piece.insert(NuevaPieza);
         
     }
+  
 	
 });
