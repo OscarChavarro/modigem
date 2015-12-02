@@ -1,30 +1,33 @@
  <template name="currentCategoria">
-                {{#if runner Visual}}
-			        <tr>
+                {{#if VISUAL false}}
+                    <tr>
                         <td class="mitad"><strong>Tipo de Obra:&nbsp;&nbsp;</strong>{{piece.obra}}</td>
                         <td class="mitad"><strong>Tecnica Empleada:&nbsp;&nbsp;</strong>{{piece.tecnica}}</td>
 			        </tr>
 				    <tr>
 				        <strong>Dimensiones (cm):&nbsp;&nbsp;</strong>{{piece.dimensiones}}
 				    </tr>
-			   
-			    {{/if}}
-			    {{#if runner Texto}}
+				{{else}}
+				{{/if}}
+			    {{#if TEXTO true}}
 			        <tr>
                         <td class="mitad"><strong>Numero de Caracteres:&nbsp;&nbsp;</strong>{{piece.caracteres}}</td>
                         <td class="mitad"><strong>Idioma:&nbsp;&nbsp;</strong>{{piece.idioma}}</td>
 			        </tr>
-			    {{/if}}
-			    {{#if  runner AudioVisual}}
+			    {{else}}
+				{{/if}}
+			    {{#if  AUDIOVISUAL true}}
 			        <tr>
                         <td class="mitad"><strong>Tiempo de duracion:&nbsp;&nbsp;</strong>{{piece.tiempo}}</td>
                         <td class="mitad"><strong>Formato:&nbsp;&nbsp;</strong>{{piece.formato}}</td>
 			        </tr>
-			    {{/if}}
-			    {{#if Auditivo}}
+			    {{else}}
+				{{/if}}
+			    {{#if AUDITIVO true}}
 			        <tr>
                         <td class="mitad"><strong>Tiempo de duracion:&nbsp;&nbsp;</strong>{{piece.duracion}}</td>
                         <td class="mitad"><strong>Streaming:&nbsp;&nbsp;</strong>{{piece.streaming}}</td>
 			        </tr>
-    {{/if}}
+                {{else}}
+				{{/if}}
 </template>
