@@ -3,7 +3,7 @@ Template.addUser2Role.events({
         e.preventDefault();
         userId2Up = $(e.target).find('[name=name]').val();
         rolUser     = $(e.target).find('[name=rol]').val();
-		if(user2Role.find({user: Meteor.users.findOne({_id: userId2Up})})._id.count()+1>1){
+		if(user2Role.find({user: Meteor.users.findOne({_id: userId2Up})})count()+1>1){
 	    //Remover al usuario del rol anterior	
 		}
 	    //else{ ASIGNARLE NUEVO ROL
