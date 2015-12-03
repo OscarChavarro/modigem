@@ -1,0 +1,157 @@
+<template name="formularioPieza1">
+    <div class= "contenidos">
+        <div id="formulariosdePiezas">
+            <form>
+                <table>
+				    <tr>
+				    <td width="50%">
+					  <div>
+					   {{>toAdminPanel}}
+					  </div>
+                      <div>
+                            <label>Nombre de la pieza</label>
+                            <div class="class-formgroup">
+                                <input  class="form-control" name="nombrepieza" type="text" value="" placeholder="Ingrese Nombre de la pieza"/>
+                            </div>
+                        </div>
+                        <div>
+                            <label>Nombre Popular de la pieza</label>
+                            <div class="class-formgroup">
+                                <input class="form-control" name="nombrepopular" type="text" value="" placeholder="Ingrese Nombre popular de la pieza"/>
+                            </div>
+                        </div>
+                        <div>
+                            <label>Etiquetas</label>
+                            <div class="class-formgroup">
+                                <input class="form-control" name="etiqueta" type="text" value="" placeholder="bla, bla, bla"/>
+                            </div>
+                        </div>
+                        <div class="class-formgroup">
+                            <label>Descripción de la pieza</label>
+                            <div>
+                                <textarea class="form-control" rows="3" name="descripcion" value="" placeholder="Ingrese breve descripcion de la pieza..."></textarea>
+                            </div>
+                        </div>
+                        <div class="class-formgroup">
+							<div>
+                            <label>Tipo de medio</label>
+							</div>
+                            <div class="radio-inline">
+                                <label>
+                                    <input class="checkboxs" type="radio" name="medio"  value="Visual">Visual
+                                </label>
+                            </div>
+                            <div class="radio-inline">
+                                <label>
+                                    <input  class="checkboxs" type="radio" name="medio"   value="Texto">Texto
+                                </label>
+                            </div>
+                            <div class="radio-inline">
+                                <label>
+                                    <input class="checkboxs" type="radio" name="medio"  value="AudioVisual">AudioVisual
+                                </label>
+                            </div>
+							<div class="radio-inline">
+                                <label>
+                                    <input class="checkboxs" type="radio" name="medio"  value="Auditivo">Auditivo
+                                </label>
+                            </div>
+                        </div>
+						<br>
+						{{#if Visual}}
+						    <div class="form-group">
+                                <label>Tipo de Obra</label>
+                                    <input class="form-control" name="obra" type="text" placeholder="Pintura, Arquitectonica, Escultura, Imagen...">
+                            </div>
+							<div class="form-group">
+                                <label>Tecnica empleada</label>
+                                    <input class="form-control" name="tecnica" type="text" placeholder="Oleo...">
+                            </div>
+							<div class="form-group">
+                                <label>Dimensiones</label>
+                                    <input class="form-control" name="dimensiones" type="text" placeholder="Ancho x Largo">
+                            </div>
+							
+						{{/if}}
+						{{#if Texto}}
+						    <div class="form-group">
+                                <label>Numero de caracteres</label>
+                                    <input class="form-control" name="caracteres" type="text" placeholder="Ingerese numero de caracteres">
+                            </div>
+							<div class="form-group">
+                                <label>Idioma</label>
+                                    <input class="form-control" name="idioma" type="text" placeholder="Ingerese Idioma">
+                            </div>
+						{{/if}}
+						{{#if AudioVisual}}
+						    <div class="form-group">
+                                <label>tiempo de Duracion</label>
+                                    <input class="form-control" name="tiempo" type="text" placeholder="00:00:00">
+                            </div>
+							<div class="form-group">
+                                <label>Formato</label>
+                                    <input class="form-control" name="formato" type="text" placeholder="mp4, hdmi, br...">
+                            </div>
+						{{/if}}
+						{{#if Auditivo}}
+						    <div class="form-group">
+                                <label>Tiempo de Duracion</label>
+                                    <input class="form-control" name="duracion" type="text" placeholder="00:00:00">
+                            </div>
+							<div class="form-group">
+                                <label>Streaming</label>
+                                    <input class="form-control" name="streaming" type="text" placeholder="stereo, mono...">
+                            </div>
+						{{/if}}
+						</td>
+						<td width="50%">
+						<div class="form-group">
+                            <label>Fecha de creación entre:</label>
+                            <input class="form-control" name="inicio" type="text" placeholder="Desde">
+                            <label>Y</label>
+                            <input class="form-control" name="fin" type="text" placeholder="Hasta">
+                        </div>
+						<div class="form-group">
+                                <label>Lugar de Origen</label>
+                                    <input class="form-control" name="origen" type="text" placeholder="Ingrese lugar de Origen">
+                        </div>
+						<div class="form-group">
+                                <label>Ubicacion Actual</label>
+                                    <input class="form-control" name="ubicacion" type="text" placeholder="Ingrese nombre del lugar">
+                        </div>
+                        <div class="form-group">
+                                <label>Coleccion a la que pertenece</label>
+                                    <input class="form-control" name="coleccion" type="text" placeholder="Ingrese nombre de la coleccion">
+                        </div>
+                        <div class="form-group">
+                            <label>Estado de conservacion</label>
+                            <div class="radio-inline">
+                                <label>
+                                    <input class="form-control" name="estado" type="text" placeholder="Bueno, Malo, Reparada...">
+                                </label>
+                            </div>
+							                        
+						</div>
+                        <div>
+                            {{>subir}}
+                        </div>
+						</td>
+					</tr>
+                </table>
+				<center>
+				<div class="btn-group">
+				    
+                    <button type="reset" style="background-color:#3A3136" class="btn btn-default">Borrar Todo</button>
+                    <button type="submit" style="background-color:#3A3136" class="btn btn-default">Agregar a la coleccion</button>  
+					
+                </div>
+				</center>
+            </form>
+        </div>
+        <div id="vistaprevia">
+                <center><strong>Última pieza añadida a la colección:</strong></center>
+                <br>
+                {{>previewPiece}}
+        </div>
+    </div>
+</template>

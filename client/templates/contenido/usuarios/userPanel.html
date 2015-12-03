@@ -1,0 +1,12 @@
+<template name="userPanel">
+<div class="contenidos">
+{{#if USER true}}
+{{>firstEntrance}}
+{{>defaultPanel}}
+{{>restorerPanel}}
+{{else}}
+{{>paginaNoExiste}}
+{{/if}}
+</div>
+</template>
+
