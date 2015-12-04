@@ -19,14 +19,16 @@ body {
         min-height:550px;
         
 }
-img {
-        width: 65%;
+
+#gifmodigem {
+
+        width: 55%;
         height: 525px;
         float: left;
         margin-top: 6.5%;
         margin-left:0%;
+        
 }
-
 
 header {
 top: 0%;
