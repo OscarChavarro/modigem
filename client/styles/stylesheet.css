@@ -4,46 +4,39 @@ body {
         
         
 }
-#alinearDerecha {
 
+#alinearDerecha {
         float: right;
-        
 }
+
 #padre{
-        
         position:relative;
         overflow: auto;
         width:100%;
         margin:0 auto;
         min-width:1280px;
-        min-height:550px;
-        
+        min-height:550px;        
 }
 
 #gifmodigem {
-
         width: 55%;
         height: 525px;
         float: left;
         margin-top: 6.5%;
         margin-left:0%;
-        
 }
 
 header {
-top: 0%;
-color: #FFFFFF;
-text-transform: uppercase;
-background: #B9005A;
-position: fixed;
-width: 100%;
-height: 13%;
-z-index:2;
-
-
-
-
+    top: 0%;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    background: #B9005A;
+    position: fixed;
+    width: 100%;
+    height: 13%;
+    z-index:2;
 }
+
 @font-face {
     font-family: 'open_sansregular';
     src: url('fuente/opensans-regular-webfont.eot');
@@ -57,7 +50,6 @@ z-index:2;
 } /*evocacion de fuente*/
 
 #formulario {
-
         float: right;
         text-align: center;
         color: #ffffff;
@@ -65,27 +57,23 @@ z-index:2;
         width: 35% ;
         height: 525px;
         margin-top: 6.5%;
-        
 }
-#izquierdaPreview {
 
+#izquierdaPreview {
         float: left;
         width: 50% ;
-        
 }
-#derechaPreview {
 
+#derechaPreview {
         float: right;
         width: 50% ;
-        
 }
+
 #botonNavegacion{
-
         float: right;
-        
 }
-#showCollectionsHome {
 
+#showCollectionsHome {
         float: center;
         overflow-y:hidden;
         overflow-x:scroll;
@@ -93,8 +81,8 @@ z-index:2;
         background: #3A3136;
         width: 100% ;
         height: 60%;
-        
 }
+
 .imagenesHome{
         width: 350px;
         height: 350px;
@@ -105,7 +93,6 @@ z-index:2;
 }
 
 #vistaprevia {
-
         float: right;
         overflow: auto;
         color: #3A3136;
@@ -113,10 +100,9 @@ z-index:2;
         width: 49.8% ;
         height: 525px;
         border:solid 1px #4e4f52;
-        
 }
-#mostrarPiezas {
 
+#mostrarPiezas {
         float: right;
         overflow: auto;
         color: #3A3136;
@@ -124,10 +110,9 @@ z-index:2;
         height: 525px;
         width: 40% ;
         border:solid 1px #4e4f52;
-        
 }
-#mostrarUsuarios{
 
+#mostrarUsuarios{
         float: left;
         overflow: auto;
         color: #3A3136;
@@ -135,11 +120,9 @@ z-index:2;
         height: 50%;
         width: 15% ;
         border:solid 1px #4e4f52;
-        
 }
-#administrarAdmins{
 
-        
+#administrarAdmins{
         color: #3A3136;
         background: #ffffff;
         height: 50%;
@@ -147,39 +130,35 @@ z-index:2;
         border:solid 1px #4e4f52;
         position: absolute;
         top:37%;
-        
 }
-#mostrarAdmins{
 
+#mostrarAdmins{
         float: left;
         overflow-x: hidden;
         color: #3A3136;
         background: #ffffff;
         height: 25%;
         width: 99% ;
-        
 }
-#mostrarLandingTextActual{
 
+#mostrarLandingTextActual{
         float: center;
         overflow: auto;
         color: #3A3136;
         background: #ffffff;
         height: 30%;
         width: 99% ;
-        
 }
 
 #contenedorMostrarPiezas {
-
         float: right;
         color: #3A3136;
         background: #ffffff;
         width: 30% ;
         height: 525px;
         border:solid 1px #4e4f52;
-        
 }
+
 .contenidos {
         position:relative;
         width:100%;
@@ -189,9 +168,9 @@ z-index:2;
         background: #ffffff;
         height: 650px;
         margin-top: 9%;
-        
 }
-.main2{
+
+.main2 {
         float: left;
         text-align: center;
         color: #ffffff;
@@ -199,29 +178,26 @@ z-index:2;
         width: 100% ;
         height: 700px;
 }
-#coleccionDePiezas {
 
+#coleccionDePiezas {
         float: right;
         color: #3A3136;
         background: #ffffff;
         width: 50%;
         height: 650px;
         border:solid 1px #4e4f52;
-        
 }
 
 #formulariosdePiezas {
-
         float: left;
         color: #3A3136;
         background: #ffffff;
         width: 50% ;
         height: 650px;
         border:solid 1px #4e4f52;
-        
 }
-#nuevoLandingText {
 
+#nuevoLandingText {
         float: left;
         color: #3A3136;
         background: #ffffff;
@@ -230,91 +206,88 @@ z-index:2;
         border:solid 1px #4e4f52;
         margin-left:7%;
         margin-top:5%;
-        
 }
 
-h1{
+h1 {
         font: normal 25px 'open_sansregular',sans-serif; 
         color: #3A3136;
 }
-h2{
+
+h2 {
         font: normal 35px 'open_sansregular',sans-serif; 
 }
 
-.horizon{
+.horizon {
         display:inline;
         width:80px;
         color:#3A3136;
 }
 
-
-.vertical{
+.vertical {
         width:160px;
         color:#3A3136;
         width:160px;
 }
-#bregistro{ 
+
+#bregistro { 
         color:#3A3136;
         background:#B9005A;
-        
 }
 
-#titulo{
+#titulo {
         font: normal 48px 'open_sansregular',sans-serif;
         text-align: left;
         text-shadow:0px 14px 27px #bdb9bd;
         padding: 10px;
         float:left;
 }
-h3{
+
+h3 {
         font: normal 15px 'open_sansregular',sans-serif;        
         display:inline;
         text-align:right;
-        
 }
         
-h5{
+h5 {
         font: normal 15px 'open_sansregular',sans-serif; 
         text-align:center;
         color: #ffffff;
-        
 }
-h4{
+
+h4 {
         font: normal 15px 'open_sansregular',sans-serif; 
         text-align:center;
         color: #3A3136;
-        
-}
-.campo{
-        display:inline;
-        
 }
 
-#orden{
+.campo {
+        display:inline;
+}
+
+#orden {
         display:inline;
         float:right;
         padding:10px;
         margin:10px;
 }
+
 .btn-group {
         float:right;
         display: inline;
 
         
 }
-ul{
+
+ul {
         position: center;
         display:inline;
 }
 
-
 li {
         list-style: none;
-
 }
 
 footer {
-        
         clear: both;
         position: fixed;
         bottom: 0%; 
@@ -323,38 +296,34 @@ footer {
         background:#B9005A;
         text-align: center;
         z-index: 2;
-        
-} /*pie de pagina fijo*/
- 
+}
 
 .col-md-10 {
-        
         margin-top: 2%;
 }
-#base{
+
+#base {
         margin: 0 auto;
         width: 100%;
         
 }
-.ficha{
+
+.ficha {
         width: 90%;
         height: 90%;
         margin-left:5%;
-        
-        
 }
-td.mitad{
+
+td.mitad {
         width:65%;
         font: normal 12px 'open_sansregular',sans-serif; 
         text-align:left;
         color: #3A3136;
 }
-td.tercio{
+
+td.tercio {
         width:35%;
         font: normal 12px 'open_sansregular',sans-serif; 
         text-align:left;
         color: #3A3136;
 }
-
-        
- 
