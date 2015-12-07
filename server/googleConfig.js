@@ -1,9 +1,9 @@
-//GOOGLE
-//Accounts.loginServiceConfiguration.remove({
-//  service: "google"
-//});
-//Accounts.loginServiceConfiguration.insert({
-//  service: "google",
-//  clientId: "REGISTRAR_MODIGEM_EN_GOOGLE",
-//  secret: "yourSecret"
-//});
+GOOGLE
+Accounts.loginServiceConfiguration.remove({
+  service: 'google'
+});
+Accounts.loginServiceConfiguration.insert({
+  service: 'google',
+  clientId: 'modigem-1151',
+  secret: 'AIzaSyAmpSDpXGJjMrGy83lfTJSgmcsT0YfiqVo'
+});
