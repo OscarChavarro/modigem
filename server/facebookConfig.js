@@ -5,8 +5,8 @@ ServiceConfiguration.configurations.remove({
 if (process.env.HOSTNAME === 'modigem.museodigital.org') {
  ServiceConfiguration.configurations.insert({
     service: 'facebook',
-    appId: '1028848720505595', //AppId con URL registrada: 'http://modigem.museodigital.org/'
-    secret: 'a96157a2b8e38428b198ac3cf3cde566'
+    appId: '539374709554821', //AppId con URL registrada: 'http://modigem.museodigital.org/'
+    secret: 'fa62dfade8567db49830fcd8ae6cb471'
 });
         }else{
  ServiceConfiguration.configurations.insert({
