@@ -3,27 +3,27 @@
         <table>
             <tr><strong>Nombre de la pieza:&nbsp;&nbsp;</strong>{{piece.nombre1}}</tr>
         </table>
-		<table>
+        <table>
             <tr><strong>Nombre popular de la pieza:&nbsp;&nbsp;</strong>{{piece.nombre2}}</tr>
             <tr><strong>Última imagen añadida a la colección:</strong></tr>
         </table>
         <table>
-		
+        
             <td width="90%" height="350px">
-			
+            
                 {{#with FS.GetFile "images" piece.imagenID}}
                     <img class="ficha" src="{{url}}">
                 {{/with}}
-			
-            </td> 			
+            
+            </td>             
         </table>
         <table>
             <tr><strong>Etiquetas:&nbsp;&nbsp;</strong>{{piece.etiqueta}}</tr>
         </table>
-		<table>
+        <table>
             <tr><strong>Descripcion:&nbsp;&nbsp;</strong>{{piece.descripcion}}</tr>
         </table>
-		<table>
+        <table>
             <tr><strong>La pieza es de tipo:&nbsp;&nbsp;</strong>{{piece.categoria}}</tr>
         </table>
         <table>
@@ -36,9 +36,9 @@
             <tr>
                 <td class="mitad"><strong>Lugar de Origen:&nbsp;&nbsp;</strong>{{piece.origen}}</td>
                 <td class="mitad"><strong>Ubicacion actual:&nbsp;&nbsp;</strong>{{piece.ubicacion}}</td>
-			</tr>
-			<tr>
-			    <td class="mitad"><strong>Estado de conservacion:&nbsp;&nbsp;</strong>{{piece.estado}}</td>
+            </tr>
+            <tr>
+                <td class="mitad"><strong>Estado de conservacion:&nbsp;&nbsp;</strong>{{piece.estado}}</td>
                 <td class="mitad"><strong>ID de la imagen:&nbsp;&nbsp;</strong>{{piece.imagenID}}</td>
             </tr>
         </table>

@@ -4,8 +4,8 @@ Template.loginFacebook.events({
             if (Meteor.user()) {
             alert('Ya se encuentra una sesión abierta');
             }else{
-				Meteor.loginWithFacebook();
-			}
+                Meteor.loginWithFacebook();
+            }
         },800);
         return false; 
     }

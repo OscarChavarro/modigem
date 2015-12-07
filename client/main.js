@@ -11,15 +11,15 @@ Meteor.subscribe('allUserRole');
 Meteor.subscribe('allUser2Role');
 
 Template.registerHelper("idFromMongoObject", function(id)
-	{
-	    if ( !valid(id) ) {
-		    return "No hay id";
-		}
-		if ( !valid(id.valueOf) ) {
-	        return "No parece ser un objeto ObjectID";
-		}
-	    return id.valueOf();
-	}
+    {
+        if ( !valid(id) ) {
+            return "No hay id";
+        }
+        if ( !valid(id.valueOf) ) {
+            return "No parece ser un objeto ObjectID";
+        }
+        return id.valueOf();
+    }
 );
 
   window.fbAsyncInit = function() {

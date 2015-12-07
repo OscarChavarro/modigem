@@ -3,7 +3,7 @@ Template.firstEntrance.helpers({
         if (user2Role.find({user: Meteor.user()._id}).count()==0) {
             return true;
         }else{
-			return false;
-		}
-	}   
+            return false;
+        }
+    }   
 });
