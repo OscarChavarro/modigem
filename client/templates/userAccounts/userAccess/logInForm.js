@@ -7,9 +7,9 @@ Template.loginForm.events({
         setTimeout(function(){
             if (Meteor.user()) {
                 if (user2Role.find({rol: userRole.findOne({nameC: 'ADMINISTRATOR'})._id, user: Meteor.user()._id}).count() +1 > 1){
-                    Router.go('adminPanel');
+                    Router.go('/');
                 }else{
-                    Router.go('userPanel');
+                    Router.go('/');
                 }
             }else{
                     Router.go('home');

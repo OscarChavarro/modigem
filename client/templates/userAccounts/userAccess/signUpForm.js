@@ -15,7 +15,7 @@ Template.signUpForm.events({
         /*Se llena el formulario del usuario en la coleccion de usuarios registrados*/
         Accounts.createUser({email: logemail, username: logname, password: logpassword});
         setTimeout(function(){
-        Router.go('userPanel');
+        Router.go('/');
         },4000);
     return false; 
         /*Se crea el usuario y se redirecciona a su panel de trabajo*/
