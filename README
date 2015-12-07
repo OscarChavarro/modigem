@@ -1,1 +1,8 @@
 Project MODIGEM. Propiedad de Museo Digital S.A.S.
+
+Para iniciar una copia de git:
+
+git clone https://github.com/SithMasterBDSM/modigem.git
+git remote rm origin
+git remote add origin https://user:password@github.com/SithMasterBDSM/modigem.git
+git branch --set-upstream-to=origin/master master
