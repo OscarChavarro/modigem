@@ -7,4 +7,5 @@ Para iniciar una copia de git:
 git clone https://github.com/SithMasterBDSM/modigem.git
 git remote rm origin
 git remote add origin https://user:password@github.com/SithMasterBDSM/modigem.git
+git config --global push.default matching
 git branch --set-upstream-to=origin/master master
