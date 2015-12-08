@@ -114,7 +114,7 @@ header {
 
 #mostrarUsuarios{
 	float: left;
-    overflow: auto;
+    overflow: visible;
     height: 100%;
     width: 75% ;
 }

@@ -4,7 +4,7 @@ Template.loginTwitter.events({
             if (Meteor.user()) {
             alert('Ya se encuentra una sesión abierta');
             }else{
-                //Meteor.loginWithTwitter();
+                Meteor.loginWithTwitter();
             }
         },800);
         return false; 
