@@ -1,4 +1,28 @@
 <!--
+Plantilla privada 
+-->
+<template name="checkboxForUserRole">
+    {{#if ..}}
+        <input
+            type="checkbox"
+            name="userRole"
+            value="{{nameC}}"
+            id="{{_id}}"
+            {{checkIfActive ../_id _id}}
+        />
+    {{else}}
+        <input
+            type="checkbox"
+            name="userRole"
+            value="{{nameC}}"
+            id="{{_id}}"
+        />
+    {{/if}}
+    {{nameSpa}}
+    <br>
+</template>
+
+<!--
 Plantilla privada.
 
 Dentro del panel de administración de usuarios
@@ -12,11 +36,21 @@ se muestra a la derecha de la pantalla.
 	<table border="2">
         <tr id="encabezado">
             <th>Usuario</th>
+			<th>Correo</th>
+			<th>Perfiles</th>
 			<th>Eliminar</th>
         </tr>
         {{#each USER}}
         <tr>
             <td>{{showUserName}}</td>
+            <td>{{showUserEmail}}</td>
+			<td>
+			    <form id="selectUserProfiles">					
+					{{#each getArrayOfUserProfiles}}
+					    {{> checkboxForUserRole}}
+					{{/each}}
+				</form>
+			</td>
             <td>
 			    <form id="deleteUser">
 				    <input type="submit" name="delete" value="¡Eliminar!" id={{_id}}>
