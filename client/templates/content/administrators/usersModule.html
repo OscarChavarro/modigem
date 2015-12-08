@@ -1,22 +1,30 @@
+<!-- 
+Plantilla pública.
+
+Esta plantilla implementa la ruta /usersModule
+y se encarga de mostrar al usuario administrador
+una interface donde puede manejar usuarios y
+roles de usuario.
+-->
 <template name="usersModule">
-<div class="contenidos">
-{{#if ADMIN true}}
-<div id="botonNavegacion">
-{{>toAdminPanel}}
-</div>
-<div id="izquierdaPreview">
-{{>usersTable}}
-{{>deleteUser}}
-</div>
-<div id="derechaPreview">
-{{>addRole}}
-<br>
-{{>rolesTable}}
-<br>
-{{>addUser2Role}}
-</div>
-{{else}}
-{{>paginaNoExiste}}
-{{/if}}
-     </div>
+	<div class="contenidos">
+		{{#if ADMIN true}}
+			<div id="botonNavegacion">
+				{{>toAdminPanel}}
+			</div>
+			<div id="izquierdaPreview">
+				{{>usersTable}}
+				{{>deleteUser}}
+			</div>
+			<div id="derechaPreview">
+				{{>addRole}}
+			<br>
+				{{>rolesTable}}
+			<br>
+				{{>addUser2Role}}
+			</div>
+		{{else}}
+			{{>paginaNoExiste}}
+		{{/if}}
+	</div>
 </template>
