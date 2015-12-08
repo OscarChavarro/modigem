@@ -1,16 +1,26 @@
+<!--
+Plantilla privada.
+
+Dentro del panel de administración de usuarios
+en la ruta /usersModule, este listado de usuarios
+se muestra a la derecha de la pantalla.
+-->
 <template name="usersTable">
     <h3>Usuarios registrados</h3>
-    <table>
+    <table border="2">
         <tr id="encabezado">
-            <td><u>Usuario</u></td>
-            <td><u>Id</u></td>
-                
+            <th>Usuario</th>
+			<th>Eliminar</th>
         </tr>
         <br>
         {{#each USER}}
         <tr>
-            <td>{{username}}</td>
-            <td>{{_id}}</td>
+            <td>{{showUserName}}</td>
+            <td>
+			    <form id="deleteUser">
+				    <input type="submit" name="delete" value="¡Eliminar!" id={{_id}}>
+				</form>
+			</td>
         </tr>
         {{/each}}
     </table>
