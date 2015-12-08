@@ -19,7 +19,7 @@ Template.goToPanelBut.helpers({
         }
     }
     fbPic: function() {
-        if (Meteor.user().services.facebook.id) {
+        if (Meteor.user().services.facebook) {
             return "http://graph.facebook.com/" + Meteor.user().services.facebook.id + "/picture/?type=large";
         }
     }
