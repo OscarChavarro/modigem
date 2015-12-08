@@ -56,6 +56,17 @@ z-index:2;
 
 #formulario {
 
+    float: right;
+    text-align: center;
+    color: #ffffff;
+    background: #3A3136;
+    width: 35% ;
+    height: 525px;
+    margin-top: 6.5%;
+	border:solid 1px #4e4f52;
+}
+
+#bienvenida{
         float: right;
         text-align: center;
         color: #ffffff;
@@ -115,6 +126,7 @@ z-index:2;
 }
 #mostrarPiezas {
 
+
         float: right;
         overflow: auto;
         color: #3A3136;
@@ -123,6 +135,21 @@ z-index:2;
         width: 40% ;
         border:solid 1px #4e4f52;
         
+}
+
+#mostrarUsuarios{
+	
+	float: left;
+    overflow: auto;
+    height: 100%;
+    width: 75% ;
+}
+#asignaRoles{
+	
+	float: right;
+    height: 100%;
+    width: 25% ;
+
 }
 #mostrarUsuarios{
 
@@ -218,8 +245,16 @@ z-index:2;
         border:solid 1px #4e4f52;
         
 }
-#nuevoLandingText {
 
+
+
+#bienvenida {
+    float: center;
+    color: #ffffff;
+    background: #3A3136;
+}
+
+#nuevoLandingText {
         float: left;
         color: #3A3136;
         background: #ffffff;
