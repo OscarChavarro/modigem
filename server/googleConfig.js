@@ -5,8 +5,8 @@ ServiceConfiguration.configurations.remove({
 if (process.env.HOSTNAME === 'modigem.museodigital.org') {
  ServiceConfiguration.configurations.insert({
     service: 'google',
-    clientId: '867822180775-hevb99lqr3fhh1q85g3e7ec5b19hslae.apps.googleusercontent.com', //clientId con URL registrada: 'http://modigem.museodigital.org/' MODIGEM
-    secret: 'vGDl7b1yWCuDY453rFUSFc61'
+    clientId: '867822180775-7k7k5vbrmb9kokhkp1k95t6a51n0j0bn.apps.googleusercontent.com', //clientId con URL registrada: 'http://modigem.museodigital.org/' MODIGEM
+    secret: 'CMSjNGhDlverFe0YvifnO3Fo'
 });
         }else{
  ServiceConfiguration.configurations.insert({
