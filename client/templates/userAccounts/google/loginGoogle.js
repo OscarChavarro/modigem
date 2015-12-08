@@ -4,7 +4,7 @@ Template.loginGoogle.events({
             if (Meteor.user()) {
             alert('Ya se encuentra una sesión abierta');
             }else{
-                //Meteor.loginWithGoogle();
+                Meteor.loginWithGoogle();
             }
         },800);
         return false; 
