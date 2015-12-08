@@ -115,7 +115,12 @@ header {
 #mostrarUsuarios{
 	float: left;
     overflow: auto;
-    height: 200px;
+    height: 100%;
+    width: 75% ;
+}
+#asignaRoles{
+	float: right;
+    height: 100%;
     width: 25% ;
 }
 
