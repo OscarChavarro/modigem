@@ -6,13 +6,14 @@ en la ruta /usersModule, este listado de usuarios
 se muestra a la derecha de la pantalla.
 -->
 <template name="usersTable">
-    <h3>Usuarios registrados</h3>
-    <table border="2">
+    <h3><strong>Usuarios registrados</strong></h3>
+	<br>
+	<div id="mostrarUsuarios">
+	<table border="2">
         <tr id="encabezado">
             <th>Usuario</th>
 			<th>Eliminar</th>
         </tr>
-        <br>
         {{#each USER}}
         <tr>
             <td>{{showUserName}}</td>
@@ -23,5 +24,6 @@ se muestra a la derecha de la pantalla.
 			</td>
         </tr>
         {{/each}}
-    </table>
+	</table>
+	</div>
 </template>
