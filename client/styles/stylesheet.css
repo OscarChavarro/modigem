@@ -55,6 +55,7 @@ header {
     width: 35% ;
     height: 525px;
     margin-top: 6.5%;
+	border:solid 1px #4e4f52;
 }
 
 #izquierdaPreview {
@@ -204,6 +205,11 @@ header {
     border:solid 1px #4e4f52;
     margin-left:7%;
     margin-top:5%;
+}
+#bienvenida {
+    float: center;
+    color: #ffffff;
+    background: #3A3136;
 }
 
 h1 {
