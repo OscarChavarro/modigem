@@ -1,0 +1,42 @@
+<template name="layout">
+    <div class="container-fluid">
+        <div class="navbar navbar-inverse navbar-fixed-top homeheader" role="navigation">
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+            <title>MODIGEM</title>
+            <link rel="stylesheet" type="text/css" href="/stylesheets/arreglos.css">
+            <link rel="stylesheet" type="text/css" href="/stylesheets/custom.css">
+            <div>
+                <div>
+				
+                    <a id="titulo" href="/"><img src="http://museodigital.org/wp-content/uploads/2015/11/modigem-logo-blanco.png"  width="300" height="100"/></a>
+					<div id="infoButton">
+					{{>toAboutUs}}
+					</div>
+			
+                </div>
+                <div id="orden">
+                    {{#if ayudante true}}
+                        {{>loginForm}}
+                    {{else}}
+                        {{>currentuser}}
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="parent" class="container-fluid move-more-down">
+        {{> yield}}
+    </div>
+
+    <div class="container-fluid">
+        <h4><strong>Museo Digital S.A.S. - Derechos reservados (c) 2015</strong></h4>
+		<div
+  class="fb-like"
+  data-share="true"
+  data-width="450"
+  data-show-faces="true">
+</div>
+    </div>
+</template>

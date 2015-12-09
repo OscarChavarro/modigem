@@ -1,0 +1,64 @@
+<template name="showPieces">
+    <div id="izquierdaPreview">
+        
+            
+            {{#each pieces}}
+            <table>
+            <tr><strong>Nombre de la pieza:&nbsp;&nbsp;</strong>{{nombre1}}</tr>
+            <tr width="90%" height="350px">
+            
+                {{#with FS.GetFile "images" imagenID}}
+                    <img class="ficha" src="{{url}}">
+                {{/with}}
+            
+            </tr>     
+            <tr><strong>Nombre popular de la pieza:&nbsp;&nbsp;</strong>{{nombre2}}</tr>
+            <tr><strong>imagen añadida a la colección:</strong></tr>
+            <tr><strong>Etiquetas:&nbsp;&nbsp;</strong>{{etiqueta}}</tr>
+            <tr><strong>Descripcion:&nbsp;&nbsp;</strong>{{descripcion}}</tr>
+            <tr><strong>La pieza es de tipo:&nbsp;&nbsp;</strong>{{categoria}}</tr>
+        
+             {{#if VISUAL false}}
+                    <tr>
+                        <td class="mitad"><strong>Tipo de Obra:&nbsp;&nbsp;</strong>{{obra}}</td>
+                        <td class="mitad"><strong>Tecnica Empleada:&nbsp;&nbsp;</strong>{{tecnica}}</td>
+                    </tr>
+                    <tr>
+                        <strong>Dimensiones (cm):&nbsp;&nbsp;</strong>{{dimensiones}}
+                    </tr>
+                {{else}}
+                {{/if}}
+                {{#if TEXTO true}}
+                    <tr>
+                        <td class="mitad"><strong>Numero de Caracteres:&nbsp;&nbsp;</strong>{{caracteres}}</td>
+                        <td class="mitad"><strong>Idioma:&nbsp;&nbsp;</strong>{{idioma}}</td>
+                    </tr>
+                {{else}}
+                {{/if}}
+                {{#if  AUDIOVISUAL true}}
+                    <tr>
+                        <td class="mitad"><strong>Tiempo de duracion:&nbsp;&nbsp;</strong>{{tiempo}}</td>
+                        <td class="mitad"><strong>Formato:&nbsp;&nbsp;</strong>{{formato}}</td>
+                    </tr>
+                {{else}}
+                {{/if}}
+                {{#if AUDITIVO true}}
+                    <tr>
+                        <td class="mitad"><strong>Tiempo de duracion:&nbsp;&nbsp;</strong>{{duracion}}</td>
+                        <td class="mitad"><strong>Streaming:&nbsp;&nbsp;</strong>{{streaming}}</td>
+                    </tr>
+                {{else}}
+                {{/if}}
+        
+            <tr><strong>Elaborado entre:&nbsp;</strong>{{inicio}}&nbsp;y&nbsp;{{fin}}</tr>
+            <tr class="mitad"><strong>Lugar de Origen:&nbsp;&nbsp;</strong>{{origen}}</tr>
+            <tr class="mitad"><strong>Ubicacion actual:&nbsp;&nbsp;</strong>{{ubicacion}}</tr>
+            <tr class="mitad"><strong>Estado de conservacion:&nbsp;&nbsp;</strong>{{estado}}</tr>
+            <tr class="mitad"><strong>ID de la imagen:&nbsp;&nbsp;</strong>{{imagenID}}</tr>
+            </table>
+           {{/each}}
+        
+   
+    </div>
+</template>
+

@@ -1,0 +1,61 @@
+<!-- 
+Plantilla privada.
+-->
+<template name="formEditorDemoLoading">
+    Cargando información de la base de datos.
+</template>
+
+<!--
+Plantilla pública.
+
+Esta página permite gestionar todos los formularios disponibles. Permite
+crear, modificar y borrar formularios.
+-->
+<template name="formEditorDemo">
+    <h1>Editor de formularios</h1>
+
+    Las opciones del formulario de colecciones por museo hacen uso de los
+    <a href="/serviceRequestQueryTypeCreate">tipos de respuesta</a>.
+
+    Cada formulario tiene un identificador _id en la base de datos MongoDB.
+    Para seleccionar un formulario, se especifica el identificador en una
+    variable de sesión que se debe llamar formId, usando el llamado
+    Session.set("formId", "[ID]");. En esta página se tienen algunos 
+    identificadores de ejemplo para probar el acceso al módulo de editor
+    de formularios.
+
+    <table border="2">
+        <tr>
+            <th>ID</th>
+            <th>NOMBRE</th>
+            <th>BORRAR</th>
+        </tr>
+        {{#each allForms}}
+            <tr>
+                <td>
+                    <a id="setFormId" 
+                        data-id={{idFromMongoObject this._id}} 
+                        href="/formEditor">
+                        {{idFromMongoObject this._id}}
+                    </a>
+                </td>
+                <td>
+                    {{this.nameSpa}}
+                </td>
+                <td>
+                    <form class="deleteForm" id={{idFromMongoObject this._id}}>
+                        <input type="submit" value="¡Borrar!">
+                    </form>
+                </td>
+            </tr>
+        {{/each}}
+        <tr>
+            <td colspan="3">
+                <form id="createForm">
+                    <input type="submit" value="¡Crear un nuevo formulario!">
+                </form>
+            </td>
+        </tr>
+    </table>
+
+</template>

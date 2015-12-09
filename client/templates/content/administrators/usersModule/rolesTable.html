@@ -1,0 +1,17 @@
+<template name="rolesTable">
+    <strong>Roles registrados</strong>
+    <table>
+        <tr id="encabezado">
+            <td><b>Nombre en inglés/</b></td>
+            <td><b>Nombre en español</b></td>
+                
+        </tr>
+        <br>
+        {{#each ROL}}
+        <tr>
+            <td>{{nameC}}</td>
+            <td>{{nameSpa}}</td>
+        </tr>
+        {{/each}}
+    </table>
+</template>

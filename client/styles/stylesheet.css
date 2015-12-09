@@ -1,0 +1,474 @@
+body {
+        position:relative;
+     background: #B9005A;
+        
+        
+}
+#alinearDerecha {
+
+        float: right;
+        
+}
+#padre{
+        
+        position:relative;
+        overflow: auto;
+        width:100%;
+        margin:0 auto;
+        min-width:1280px;
+        min-height:550px;
+        
+}
+img {
+       
+        
+        float: left;
+        margin-top: 2%;
+        margin-left:0%;
+}
+
+
+header {
+top: 0%;
+color: #FFFFFF;
+text-transform: uppercase;
+background: #B9005A;
+position: fixed;
+width: 100%;
+height: 10%;
+z-index:2;
+
+
+
+
+}
+@font-face {
+    font-family: 'open_sansregular';
+    src: url('fuente/opensans-regular-webfont.eot');
+    src: url('fuente/opensans-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fuente/opensans-regular-webfont.woff2') format('woff2'),
+         url('fuente/opensans-regular-webfont.woff') format('woff'),
+         url('fuente/opensans-regular-webfont.ttf') format('truetype'),
+         url('fuente/opensans-regular-webfont.svg#open_sansregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+} /*evocacion de fuente*/
+
+#formulario {
+
+    float: right;
+    text-align: center;
+    color: #ffffff;
+    background: #3A3136;
+    width: 35% ;
+    height: 525px;
+    margin-top: 6.5%;
+	border:solid 1px #4e4f52;
+}
+
+#bienvenida{
+        float: right;
+        text-align: center;
+        color: #ffffff;
+        background: #3A3136;
+        width: 35% ;
+        height: 525px;
+        margin-top: 6.5%;
+        
+}
+#izquierdaPreview {
+
+        float: left;
+        width: 50% ;
+        
+}
+#derechaPreview {
+
+        float: right;
+        width: 50% ;
+        
+}
+#botonNavegacion{
+
+        float: right;
+        
+}
+#showCollectionsHome {
+
+        float: center;
+        overflow-y:hidden;
+        overflow-x:scroll;
+        color: #ffffff;
+        background: #3A3136;
+        width: 100% ;
+        height: 60%;
+        
+}
+.imagenesHome{
+        width: 350px;
+        height: 350px;
+        border-radius: 9px 9px 9px 9px;
+   -moz-border-radius: 9px 9px 9px 9px;
+   -webkit-border-radius: 9px 9px 9px 9px;
+    border: 1px solid #000000;
+}
+
+#vistaprevia {
+
+        float: right;
+        overflow: auto;
+        color: #3A3136;
+        background: #ffffff;
+        width: 49.8% ;
+        height: 525px;
+        border:solid 1px #4e4f52;
+        
+}
+#mostrarPiezas {
+
+
+        float: right;
+        overflow: auto;
+        color: #3A3136;
+        background: #ffffff;
+        height: 525px;
+        width: 40% ;
+        border:solid 1px #4e4f52;
+        
+}
+
+#mostrarUsuarios{
+	
+	float: left;
+    overflow: auto;
+    height: 100%;
+    width: 75% ;
+}
+#asignaRoles{
+	
+	float: right;
+    height: 100%;
+    width: 25% ;
+
+}
+#mostrarUsuarios{
+
+        float: left;
+        overflow: auto;
+        color: #3A3136;
+        background: #ffffff;
+        height: 50%;
+        width: 15% ;
+        border:solid 1px #4e4f52;
+        
+}
+#administrarAdmins{
+
+        
+        color: #3A3136;
+        background: #ffffff;
+        height: 50%;
+        width: 15% ;
+        border:solid 1px #4e4f52;
+        position: absolute;
+        top:37%;
+        
+}
+#mostrarAdmins{
+
+        float: left;
+        overflow-x: hidden;
+        color: #3A3136;
+        background: #ffffff;
+        height: 25%;
+        width: 99% ;
+        
+}
+#mostrarLandingTextActual{
+
+        float: center;
+        overflow: auto;
+        color: #3A3136;
+        background: #ffffff;
+        height: 30%;
+        width: 99% ;
+        
+}
+
+#contenedorMostrarPiezas {
+
+        float: right;
+        color: #3A3136;
+        background: #ffffff;
+        width: 30% ;
+        height: 525px;
+        border:solid 1px #4e4f52;
+        
+}
+.contenidos {
+        position:relative;
+        width:100%;
+        margin:0 auto;
+        min-height:550px;
+        color: #3A3136;
+        background: #ffffff;
+        height: 650px;
+        margin-top: 9%;
+        
+}
+.main2{
+        float: left;
+        text-align: center;
+        color: #ffffff;
+        background: #3A3136;
+        width: 100% ;
+        height: 700px;
+}
+#coleccionDePiezas {
+
+        float: right;
+        color: #3A3136;
+        background: #ffffff;
+        width: 50%;
+        height: 650px;
+        border:solid 1px #4e4f52;
+        
+}
+
+#formulariosdePiezas {
+
+        float: left;
+        color: #3A3136;
+        background: #ffffff;
+        width: 50% ;
+        height: 650px;
+        border:solid 1px #4e4f52;
+        
+}
+
+
+
+#bienvenida {
+    float: center;
+    color: #ffffff;
+    background: #3A3136;
+}
+
+#nuevoLandingText {
+        float: left;
+        color: #3A3136;
+        background: #ffffff;
+        width: 50% ;
+        height: 50%;
+        border:solid 1px #4e4f52;
+        margin-left:7%;
+        margin-top:5%;
+        
+}
+
+h1{
+        font: normal 25px 'open_sansregular',sans-serif; 
+        color: #3A3136;
+}
+h2{
+        font: normal 35px 'open_sansregular',sans-serif; 
+}
+
+.horizon{
+        display:inline;
+        width:80px;
+        color:#3A3136;
+}
+
+
+.vertical{
+        width:160px;
+        color:#3A3136;
+        width:160px;
+}
+#bregistro{ 
+        color:#3A3136;
+        background:#B9005A;
+        
+}
+
+#titulo{
+        font: normal 48px 'open_sansregular',sans-serif;
+        text-align: left;
+        text-shadow:0px 14px 27px #bdb9bd;
+        padding: 5px;
+        float:left;
+}
+h3{
+        font: normal 15px 'open_sansregular',sans-serif;        
+        display:inline;
+        text-align:right;
+        
+}
+        
+h5{
+        font: normal 15px 'open_sansregular',sans-serif; 
+        text-align:center;
+        color: #ffffff;
+        
+}
+h4{
+        font: normal 15px 'open_sansregular',sans-serif; 
+        text-align:center;
+        color: #3A3136;
+        
+}
+.campo{
+        display:inline;
+        
+}
+
+#orden{
+        display:inline;
+        float:right;
+        padding:10px;
+        margin:10px;
+}
+.btn-group {
+        float:right;
+        display: inline;
+
+        
+}
+ul{
+        position: center;
+        display:inline;
+}
+
+
+li {
+        list-style: none;
+
+}
+
+footer {
+        
+        clear: both;
+        position: fixed;
+        bottom: 0%; 
+        height: 5%;
+        width:100%;
+        background:#B9005A;
+        text-align: center;
+        z-index: 2;
+        
+} /*pie de pagina fijo*/
+ 
+
+.col-md-10 {
+        
+        margin-top: 2%;
+}
+#base{
+        margin: 0 auto;
+        width: 100%;
+		
+}
+.ficha{
+        width: 90%;
+        height: 90%;
+		margin-left:5%;
+        
+        
+}
+td.mitad{
+        width:65%;
+        font: normal 12px 'open_sansregular',sans-serif; 
+        text-align:left;
+        color: #3A3136;
+}
+td.tercio{
+        width:35%;
+        font: normal 12px 'open_sansregular',sans-serif; 
+        text-align:left;
+        color: #3A3136;
+}
+
+#infoButton{
+	display:inline;
+	color:#ffffff;
+	font: normal 12px 'open_sansregular',sans-serif; 
+	
+	margin-left: 1%;
+}   
+ 
+.facebook_button {
+    display: inline-block;
+
+    background: #627aac url(http://www.technomancy.org/html/facebook-button/facebook_small.png) left no-repeat;
+
+    border-top: 1px solid #29447e;
+    border-right: 1px solid #29447e;
+    border-bottom: 1px solid #1a356e;
+    border-left: none;
+
+    height: 22px;
+
+    padding-right: 7px;
+    padding-left: 29px;
+
+    font-weight: bold;
+    font-size: 11px;
+    color: white;
+    text-decoration: none;
+    font-family: "lucida grande", tahoma, verdana, arial, sans-serif;
+    line-height: 22px;
+
+    cursor: pointer;
+
+}
+
+button#twitter {
+	display: inline-block;
+
+    background: #33bdef url(http://99casinomalaysia.com/assets/site/images/twiter.png) left no-repeat;
+    background-size: 22px;
+    border-top: 1px solid #057fd0;
+    border-right: 1px solid #057fd0;
+    border-bottom: 1px solid #057fd0;
+    border-left: none;
+
+    height: 22px;
+
+    padding-right: 7px;
+    padding-left: 29px;
+
+    font-weight: bold;
+    font-size: 11px;
+    color: white;
+    text-decoration: none;
+    font-family: "lucida grande", tahoma, verdana, arial, sans-serif;
+    line-height: 22px;
+
+    cursor: pointer;
+}
+
+button#google {
+	display: inline-block;
+
+    background: #d0451b url(http://3.bp.blogspot.com/-QxBiINNorls/UNnuynO7B4I/AAAAAAAARgA/eZneO3VutoM/s1600/g%252B250.png) left no-repeat;
+    background-size: 22px;
+    border-top: 1px solid #942911;
+    border-right: 1px solid #942911;
+    border-bottom: 1px solid #942911;
+    border-left: none;
+
+    height: 22px;
+
+    padding-right: 7px;
+    padding-left: 29px;
+
+    font-weight: bold;
+    font-size: 11px;
+    color: white;
+    text-decoration: none;
+    font-family: "lucida grande", tahoma, verdana, arial, sans-serif;
+    line-height: 22px;
+
+    cursor: pointer;
+}

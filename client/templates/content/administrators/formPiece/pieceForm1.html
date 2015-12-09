@@ -1,0 +1,35 @@
+<template name="formularioPieza1">
+    <div class= "contenidos">
+        <div id="formulariosdePiezas">
+             {{#if this}}
+        {{startForm this._id}}
+        {{#if questionListReady this._id}}
+            {{#each dbServiceRequestForm2QueryFiltered this._id}}
+                {{{buildQuestionStart}}}
+                    <div class="form-group">
+                        <h5 class="heading-form" for={{this._id}}>
+                            {{this.descriptionSpa}}
+                        </h5>
+                        {{startQuery this._id}}
+                        {{#if answerOptionsListReady this._id}}
+                            {{{buildAnswerOptions this}}}
+                        {{else}}
+                            Cargando opciones de respuesta...
+                        {{/if}}
+                    </div>
+                {{{buildQuestionEnd}}}
+            {{/each}}
+        {{else}}
+            Cargando preguntas...
+        {{/if}}
+    {{else}}
+        Actualizando formulario...
+    {{/if}}
+        </div>
+        <div id="vistaprevia">
+                <center><strong>Última pieza añadida a la colección:</strong></center>
+                <br>
+                {{>previewPiece}}
+        </div>
+    </div>
+</template>
