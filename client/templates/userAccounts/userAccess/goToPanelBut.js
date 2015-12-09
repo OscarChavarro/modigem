@@ -20,6 +20,13 @@ Template.goToPanelBut.helpers({
 		    return false;
 	}
     },
+	twiTT: function() {
+        if (Meteor.user().services.twitter) {
+            return true;
+	}else{
+		    return false;
+	}
+    },
 	usPass: function() {
         if (Meteor.user().username) {
             return true;
@@ -32,9 +39,19 @@ Template.goToPanelBut.helpers({
             return Meteor.user().services.facebook.name;
         }
     },
+	twName: function() {
+        if (Meteor.user().services.twitter) {
+            return Meteor.user().profile.name;
+        }
+    },
 	username: function() {
         if (Meteor.user().username) {
             return Meteor.user().username;
+        }
+    },
+	twPic: function() {
+        if (Meteor.user().services.twitter) {
+            return Meteor.user().services.twitter.profile_image_url;
         }
     },
     fbPic: function() {
