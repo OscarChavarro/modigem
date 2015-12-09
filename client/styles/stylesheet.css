@@ -20,10 +20,10 @@ body {
         
 }
 img {
-       
         
+        width:65%;
         float: left;
-        margin-top: 2%;
+        margin-top: 3%;
         margin-left:0%;
 }
 
@@ -62,7 +62,7 @@ z-index:2;
     background: #3A3136;
     width: 35% ;
     height: 525px;
-    margin-top: 6.5%;
+    margin-top: 3%;
 	border:solid 1px #4e4f52;
 }
 
