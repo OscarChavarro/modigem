@@ -30,9 +30,9 @@ en la ruta /usersModule, este listado de usuarios
 se muestra a la derecha de la pantalla.
 -->
 <template name="usersTable">
-	<div id="mostrarUsuarios">
+		<div id="gestionUsuarios">
+		<center>
 		<h2>GESTIÓN DE USUARIOS</h2>
-		
 		A continuación podrá filtrar los usuarios y ver la
 		lista de usuarios.
 		<ul>
@@ -44,7 +44,9 @@ se muestra a la derecha de la pantalla.
 				</form>
 			</li>
 		</ul>
-		
+		</center>
+		<div id="boxHiddenX">
+		<center>
 		<table border="2">
 			<tr id="encabezado">
 				<th>Usuario</th>
@@ -71,5 +73,7 @@ se muestra a la derecha de la pantalla.
 			</tr>
 			{{/each}}
 		</table>
+		</center>
+	</div>
 	</div>
 </template>
