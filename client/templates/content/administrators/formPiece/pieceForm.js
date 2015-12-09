@@ -7,10 +7,11 @@ Template.toFormularioPieza.helpers({
 Template.toFormularioPieza.events({  
     "click #formEditId": function(event, template) {
         var id = event.currentTarget.getAttribute("data-id");
-        if ( valid(id) ) {
+		var oid=ObjectId("id").toString();
+        if ( valid(oid) ) {
             console.log("[formularioPieza1]: Seleccionando formulario con id " + 
-                id + " para edición");
-            Session.set("formEditId", id);
+                oid + " para edición");
+            Session.set("formEditId", oid);
         }
     }
 });
